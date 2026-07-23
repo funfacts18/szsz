@@ -1,5 +1,6 @@
 import { createApp, nextTick, ref, watch } from 'vue'
 import './overrides.css'
+import { softwareWarnings } from './data/softwareWarnings.js'
 
 const sectionIds = ['top', 'news', 'policy', 'security', 'fraud', 'ai', 'contact']
 
@@ -59,6 +60,11 @@ createApp({
     const selectAi = (key) => {
       aiKey.value = key
       document.querySelectorAll('[data-ai]').forEach((button) => button.classList.toggle('active', button.dataset.ai === key))
+      if (key === 'prompt') {
+        const content = document.querySelector('#aiContent')
+        if (content) content.innerHTML = `<h3>软件预警</h3><p>已收录学校数据管理处（信息化办公室）公开发布的 ${softwareWarnings.length} 条软件与网络安全预警，可在线查看或下载本地存档。</p><a class="warning-download-all" href="/resources/software-warnings-archive.zip" download>下载全部存档（ZIP）</a><div class="software-warning-list">${softwareWarnings.map((item) => `<article class="software-warning-item"><time>${item.date}</time><div><h4>${item.title}</h4><div class="software-warning-actions"><a href="/resources/software-warnings/${item.file}" download>下载存档</a><a href="${item.source}" target="_blank" rel="noopener">官网原文 ↗</a></div></div></article>`).join('')}</div>`
+        return
+      }
       const lesson = aiLessons[key]
       const content = document.querySelector('#aiContent')
       if (lesson && content) content.innerHTML = `<h3>${lesson[0]}</h3><p>本模块建议依次完成：</p><ol>${lesson.slice(1).map((item) => `<li>${item}</li>`).join('')}</ol>`
@@ -105,12 +111,15 @@ createApp({
       }
     }
 
-    return { interceptInteractions, selectSection, syncSections }
+    return { interceptInteractions, selectAi, selectSection, syncSections }
   },
   mounted() {
     const fromHash = window.location.hash.slice(1)
     if (sectionIds.includes(fromHash)) this.selectSection?.(fromHash)
     this.syncSections()
+    const firstAiTab = document.querySelector('[data-ai="prompt"]')
+    if (firstAiTab) firstAiTab.textContent = '软件预警'
+    this.selectAi('prompt')
     document.addEventListener('click', this.interceptInteractions, true)
     const homeNews = document.querySelector('.side .metric:nth-child(2)')
     if (homeNews) {

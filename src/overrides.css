@@ -36,6 +36,64 @@
   line-height: 1.35;
 }
 
+.warning-download-all {
+  display: inline-flex;
+  margin: 8px 0 18px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #0b5ca8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.software-warning-list {
+  display: grid;
+  gap: 0;
+  max-height: 440px;
+  overflow: auto;
+  border-top: 1px solid #dce7ed;
+}
+
+.software-warning-item {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #dce7ed;
+}
+
+.software-warning-item time {
+  color: #0b5ca8;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.software-warning-item h4 {
+  margin: 0 0 7px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.software-warning-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.software-warning-actions a {
+  color: #0b5ca8;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+@media (max-width: 620px) {
+  .software-warning-item {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+
 @media (min-width: 1001px) {
   .app-name {
     color: #fff;
