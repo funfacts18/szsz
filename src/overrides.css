@@ -133,10 +133,125 @@
   font-weight: 900;
 }
 
+.national-policy-row button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  min-height: 96px;
+  padding: 18px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: left;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.national-policy-row button:hover {
+  color: #0b5ca8;
+  transform: translateX(4px);
+}
+
+.national-policy-open {
+  flex: 0 0 auto;
+  color: #0b5ca8;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.national-policy-detail {
+  min-height: 520px;
+  padding: 30px clamp(24px, 5vw, 64px) 56px;
+}
+
+.national-policy-back {
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #0b5ca8;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.policy-breadcrumb {
+  padding: 0 0 16px;
+  border-bottom: 1px solid #e0e5e8;
+  color: #79878e;
+  font-size: 13px;
+}
+
+.policy-breadcrumb span {
+  padding: 0 8px;
+  color: #0b5ca8;
+}
+
+.national-policy-detail h3 {
+  max-width: 900px;
+  margin: 34px auto 18px;
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.policy-detail-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin: 0 auto 30px;
+  padding: 14px 20px;
+  background: #f4f7f9;
+  color: #71808a;
+  font-size: 13px;
+}
+
+.policy-detail-body {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #263840;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.policy-detail-body p {
+  margin: 0 0 20px;
+  text-align: justify;
+}
+
 @media (max-width: 620px) {
   .software-warning-item {
     grid-template-columns: 1fr;
     gap: 5px;
+  }
+
+  .national-policy-row button {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+    padding: 8px 20px 0;
+    font-size: 15px;
+  }
+
+  .national-policy-detail {
+    padding: 22px 20px 42px;
+  }
+
+  .policy-detail-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
   }
 }
 

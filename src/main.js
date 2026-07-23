@@ -2,6 +2,7 @@ import { createApp, nextTick, ref, watch } from 'vue'
 import './overrides.css'
 import { softwareWarnings } from './data/softwareWarnings.js'
 import { campusNews } from './data/campusNews.js'
+import { nationalPolicies } from './data/nationalPolicies.js'
 
 const sectionIds = ['top', 'news', 'policy', 'security', 'fraud', 'ai', 'contact']
 
@@ -12,6 +13,7 @@ createApp({
     const newsDirectory = ref('all')
     const panel = ref({ policy: 'policyNatl', fraud: 'fraudType', contact: 'contactInfo' })
     const aiKey = ref('prompt')
+    const openPolicyArticle = ref(null)
     const aiLessons = {
       prompt: ['提示词与任务设计', '目标对象与背景语境', '具体任务与可用材料', '输出格式和限制条件', '来源、核验与不确定性要求'],
       verify: ['生成内容核验', '找到可追溯的原始来源', '检查作者、日期与适用范围', '交叉验证关键数字', '标记无法确认的内容'],
@@ -52,6 +54,7 @@ createApp({
 
     const selectNewsDirectory = (type) => {
       newsDirectory.value = type
+      openPolicyArticle.value = null
       document.querySelectorAll('[data-news-directory]').forEach((button) => {
         button.classList.toggle('active', button.dataset.newsDirectory === type)
       })
@@ -61,9 +64,17 @@ createApp({
       if (type === 'campus') {
         newsList.innerHTML = campusNews.map((item) => `<article class="news-list-row campus-news-row"><time>${item.date}</time><a href="${item.source}" target="_blank" rel="noopener">${item.title}<span class="campus-news-source">官网原文 ↗</span></a></article>`).join('')
       } else {
-        newsList.innerHTML = policyNewsMarkup
-        newsList.querySelectorAll('.news-list-row').forEach((row) => row.classList.toggle('hidden', row.dataset.newsList !== 'policy'))
+        newsList.innerHTML = nationalPolicies.map((item) => `<article class="news-list-row national-policy-row"><time>${item.date}</time><button type="button" data-policy-article="${item.id}">${item.title}<span class="national-policy-open">阅读详情 →</span></button></article>`).join('')
       }
+    }
+
+    const showPolicyArticle = (id) => {
+      const article = nationalPolicies.find((item) => item.id === id)
+      const newsList = document.querySelector('#news .news-list')
+      if (!article || !newsList) return
+      openPolicyArticle.value = id
+      newsList.innerHTML = `<article class="national-policy-detail"><button type="button" class="national-policy-back" data-policy-back="true">← 返回国家政策</button><nav class="policy-breadcrumb" aria-label="当前位置">首页 <span>›</span> 新闻速递 <span>›</span> 国家政策</nav><h3>${article.title}</h3><div class="policy-detail-meta"><span>信息来源：${article.source}</span><span>发布日期：${article.date}</span></div><div class="policy-detail-body">${article.body.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div></article>`
+      nextTick(() => document.querySelector('#news .news-directory')?.scrollIntoView({ block: 'start', behavior: 'auto' }))
     }
 
     const selectAi = (key) => {
@@ -87,6 +98,8 @@ createApp({
       const tab = event.target.closest('[data-tab]')
       const directory = event.target.closest('[data-news-directory]')
       const aiButton = event.target.closest('[data-ai]')
+      const policyArticle = event.target.closest('[data-policy-article]')
+      const policyBack = event.target.closest('[data-policy-back]')
       const menu = event.target.closest('#menu')
       const homeNews = event.target.closest('.side .metric:nth-child(2)')
 
@@ -113,6 +126,14 @@ createApp({
         event.preventDefault()
         event.stopImmediatePropagation()
         selectNewsDirectory(directory.dataset.newsDirectory)
+      } else if (policyArticle) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        showPolicyArticle(policyArticle.dataset.policyArticle)
+      } else if (policyBack) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        selectNewsDirectory('policy')
       } else if (aiButton) {
         event.preventDefault()
         event.stopImmediatePropagation()
