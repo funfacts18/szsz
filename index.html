@@ -250,8 +250,8 @@
 .nav a.active::before{background:#d8efff;opacity:.22}
 .nav a:hover::before{background:#073f7b;opacity:.28}
 .tool{background:rgba(255,255,255,.18);color:#fff}
-.header-btn{background:#d9f2dc;color:#0a3d42}
-.header-btn:hover{background:#fff;color:#0c5fae}
+.header-btn.btn.alt{background:transparent;border:0;color:#fff;box-shadow:none}
+.header-btn.btn.alt:hover{background:rgba(255,255,255,.14);color:#fff}
 .welcome{background:#0b5ca8;isolation:isolate}
 .welcome::before{
   inset:0;
@@ -276,8 +276,10 @@
 .footer::before{display:none}
 .footer .shell{position:relative;z-index:1;align-items:center}
 .gsap-ready .side .metric{animation:none}
-.hero .shell{width:min(1420px,calc(100% - 20px))}
+.hero .shell{width:min(1420px,calc(100% - 32px))}
+@media(min-width:621px){.welcome{min-height:431px}}
 @media(max-width:620px){.hero .shell{width:calc(100% - 24px)}}
+.side .metric.wide{height:159px;min-height:0;padding-top:22px;padding-bottom:22px}
 @media(max-width:1000px){
   .nav{background:#0b5ca8;border-color:rgba(255,255,255,.25)}
   .nav a{color:#fff}
