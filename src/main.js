@@ -1,6 +1,7 @@
 import { createApp, nextTick, ref, watch } from 'vue'
 import './overrides.css'
 import { softwareWarnings } from './data/softwareWarnings.js'
+import { campusNews } from './data/campusNews.js'
 
 const sectionIds = ['top', 'news', 'policy', 'security', 'fraud', 'ai', 'contact']
 
@@ -17,6 +18,7 @@ createApp({
       ethics: ['科研伦理与披露', '遵循课程或期刊规则', '说明AI参与环节', '不虚构引用和数据', '由提交者承担最终责任'],
       agri: ['智慧农业案例', '检查数据采集质量', '区分模型预测与现场事实', '考虑作物、季节和区域差异', '保留农艺专家最终判断']
     }
+    let policyNewsMarkup = ''
 
     const syncSections = () => {
       document.querySelectorAll('main > section').forEach((section) => {
@@ -53,9 +55,15 @@ createApp({
       document.querySelectorAll('[data-news-directory]').forEach((button) => {
         button.classList.toggle('active', button.dataset.newsDirectory === type)
       })
-      document.querySelectorAll('#news .news-list-row').forEach((row) => {
-        row.classList.toggle('hidden', type !== 'all' && row.dataset.newsList !== type)
-      })
+      const newsList = document.querySelector('#news .news-list')
+      if (!newsList) return
+      if (!policyNewsMarkup) policyNewsMarkup = newsList.innerHTML
+      if (type === 'campus') {
+        newsList.innerHTML = campusNews.map((item) => `<article class="news-list-row campus-news-row"><time>${item.date}</time><a href="${item.source}" target="_blank" rel="noopener">${item.title}<span class="campus-news-source">官网原文 ↗</span></a></article>`).join('')
+      } else {
+        newsList.innerHTML = policyNewsMarkup
+        newsList.querySelectorAll('.news-list-row').forEach((row) => row.classList.toggle('hidden', row.dataset.newsList !== 'policy'))
+      }
     }
 
     const selectAi = (key) => {
@@ -161,8 +169,7 @@ createApp({
     document.addEventListener('click', this.interceptInteractions, true)
     const homeNews = document.querySelector('.side .metric:nth-child(2)')
     if (homeNews) {
-      const label = homeNews.querySelector('small')
-      if (label) label.textContent = '校内新闻'
+      homeNews.innerHTML = `<small>校内新闻</small><div class="home-news-list">${campusNews.slice(0, 3).map((item) => `<a href="${item.source}" target="_blank" rel="noopener">${item.title}</a>`).join('')}</div>`
       homeNews.setAttribute('role', 'button')
       homeNews.setAttribute('tabindex', '0')
       homeNews.setAttribute('aria-label', '打开新闻速递')

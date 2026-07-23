@@ -97,6 +97,34 @@
   font-weight: 800;
 }
 
+.campus-news-source {
+  display: inline-block;
+  margin-left: 14px;
+  color: #0b5ca8;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.home-news-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.home-news-list a {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.home-news-list a::before {
+  content: '·';
+  margin-right: 5px;
+  color: #0b5ca8;
+  font-weight: 900;
+}
+
 @media (max-width: 620px) {
   .software-warning-item {
     grid-template-columns: 1fr;
