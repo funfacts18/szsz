@@ -238,6 +238,48 @@
   .news-tab.active,#fraud .news-tab.active{padding-left:16px}
   .news-tab.active::before{transform:scaleX(1)}
 }
+/* Local campus visual treatments */
+.header{
+  background:#0b5ca8;
+  border-bottom-color:rgba(255,255,255,.2);
+  box-shadow:0 8px 24px rgba(8,67,145,.14);
+}
+.app-name{color:#fff}
+.nav a{color:rgba(255,255,255,.9)}
+.nav a.active{color:#fff}
+.nav a.active::before{background:#d8efff;opacity:.22}
+.nav a:hover::before{background:#073f7b;opacity:.28}
+.tool{background:rgba(255,255,255,.18);color:#fff}
+.header-btn{background:#d9f2dc;color:#0a3d42}
+.header-btn:hover{background:#fff;color:#0c5fae}
+.welcome{background:#0b5ca8;isolation:isolate}
+.welcome::before{
+  inset:0;
+  width:auto;
+  height:auto;
+  border-radius:0;
+  background:
+    linear-gradient(105deg,rgba(8,67,145,.52) 0%,rgba(24,118,210,.3) 52%,rgba(20,107,116,.16) 100%),
+    url('assets/home-campus.jpg') center 35%/cover no-repeat;
+  filter:saturate(.72) contrast(1.07) brightness(1.16);
+  animation:none;
+  z-index:0;
+}
+.welcome::after{z-index:1}
+.welcome .slider-container{z-index:2}
+.footer{
+  height:3cm;
+  padding:0;
+  background:#0b5ca8;
+  color:rgba(255,255,255,.78);
+}
+.footer::before{display:none}
+.footer .shell{position:relative;z-index:1;align-items:center}
+.gsap-ready .side .metric{animation:none}
+@media(max-width:1000px){
+  .nav{background:#0b5ca8;border-color:rgba(255,255,255,.25)}
+  .nav a{color:#fff}
+}
 </style></head><body>
 <header class="header"><div class="shell headrow"><span class="app-name">数智素养服务台</span><nav class="nav" id="nav"><a href="#top">首页</a><a href="#news">新闻速递</a><a href="#policy">政策文件</a><a href="#security">安全科普</a><a href="#fraud">主题防诈</a><a href="#ai">AI专区</a><a href="#contact">联系我们</a></nav><a class="btn alt header-btn" href="https://e.ahau.edu.cn" target="_blank" rel="noopener">进入数智安农</a><button class="tool menu" id="menu" aria-expanded="false">☰</button></div></header>
 <main id="top"><section class="hero"><div class="shell"><div class="dashboard"><div class="panel welcome"><div class="slider-container"><div class="slider-track"><div class="slide"><span class="micro">数智安农 · DIGITAL AHAU</span><h1>数智赋能 ·<br>乡村振兴</h1><p>智慧农业引领未来，数字技术赋能田间管理，让每一寸土地焕发新活力。</p></div><div class="slide"><span class="micro">AI + 农业</span><h1>可信使用<br>与数据责任</h1><p>AI助力农业科技创新，数据安全守护每一份研究成果，共建可信数字校园。</p></div><div class="slide"><span class="micro">数字素养 · 从我做起</span><h1>提升数字能力<br>守护信息安全</h1><p>从校园真实场景出发，把信息检索、数据判断、安全防护与AI协作变成可执行的小任务。</p></div></div></div></div><aside class="side"><div class="panel metric"><small>数字网站创办宗旨</small><strong>赋能师生 · 服务三农</strong><p>打造数字素养提升一站式平台</p><div class="progress"><i style="--w:62%"></i></div></div><div class="panel metric"><small>新闻速递</small><div style="margin-top:14px;display:flex;flex-direction:column;gap:10px"><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>校长操海群带队参加2026世界人工智能大会</div><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>学校数字化转型：大平台、大数据、大服务</div><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>AI赋能作物生物育种农学大师讲堂</div></div></div><div class="panel metric wide alert"><small>校园风险提醒</small><strong>警惕“兼职刷单”和“AI换脸”诈骗</strong><p>涉及转账，务必通过原有联系方式二次核实。</p></div></aside></div><div class="quick"><a href="#security"><span>盾</span>安全自测</a><a href="#ai"><span>AI</span>AI工具箱</a><a href="#policy"><span>策</span>政策速查</a><a href="https://mail.ahau.edu.cn" target="_blank" rel="noopener"><span>邮</span>学校邮箱</a><a href="https://myvpn.ahau.edu.cn" target="_blank" rel="noopener"><span>VPN</span>远程访问</a><a href="#contact"><span>问</span>服务支持</a></div></div></section>
@@ -249,6 +291,7 @@
 <section class="section hidden" id="ai"><div class="page-hero" style="background:var(--g2)"><div class="shell"><span class="micro">05 / AI LAB</span><h2 class="page-title">AI专区</h2></div></div><div class="shell ai-layout"><aside class="ai-side"><h2>AI专区</h2><p>选择学习模块，在右侧查看安农特色的实践清单。</p><div class="ai-tabs"><button class="active" data-ai="prompt">提示词与任务设计</button><button data-ai="verify">生成内容核验</button><button data-ai="ethics">科研伦理与披露</button><button data-ai="agri">智慧农业案例</button></div></aside><div class="panel ai-content" id="aiContent"><h3>提示词与任务设计</h3><p>从真实农业或学习问题出发，依次说明：</p><ol><li>目标对象与背景语境</li><li>具体任务与可用材料</li><li>输出格式和限制条件</li><li>来源、核验与不确定性要求</li></ol></div></div></section>
 <section class="section hidden" id="contact"><div class="page-hero" style="background:var(--g2)"><div class="shell"><span class="micro">06 / CONTACT</span><h2 class="page-title">联系我们</h2></div></div><div class="shell"><div class="news-layout"><aside class="news-index"><button class="news-tab active" data-tab="contact" data-panels='["contactInfo","contactService"]' data-show="contactInfo">学校信息</button><button class="news-tab" data-tab="contact" data-panels='["contactInfo","contactService"]' data-show="contactService">服务入口</button></aside><div class="news-card"><div id="contactInfo"><div class="news-item"><div class="news-icon">址</div><div class="news-meta"><h3>学校地址</h3><p>合肥市长江西路130号</p></div></div><div class="news-item"><div class="news-icon">电</div><div class="news-meta"><h3>联系电话</h3><p>0551-65786114（总机）</p></div></div><div class="news-item"><div class="news-icon">网</div><div class="news-meta"><h3>官方网站</h3><p>www.ahau.edu.cn</p></div><a href="https://www.ahau.edu.cn" target="_blank" class="news-link">访问 →</a></div></div><div id="contactService" class="hidden"><div class="news-item"><div class="news-icon">服</div><div class="news-meta"><h3>校园服务入口</h3><p>一站式校园服务大厅</p></div><a href="https://www.ahau.edu.cn/xyfw.htm" target="_blank" rel="noopener" class="news-link">进入 →</a></div><div class="news-item"><div class="news-icon">智</div><div class="news-meta"><h3>数智安农平台</h3><p>数字化校园综合门户</p></div><a href="https://e.ahau.edu.cn" target="_blank" rel="noopener" class="news-link">进入 →</a></div><div class="news-item"><div class="news-icon">邮</div><div class="news-meta"><h3>学校邮箱</h3><p>师生邮箱服务入口</p></div><a href="https://mail.ahau.edu.cn" target="_blank" class="news-link">进入 →</a></div></div></div></div></div></section></main>
 <footer class="footer"><div class="shell"><span>安徽农业大学数智素养提升平台 · 服务台型设计演示</span><span>非学校正式发布页面，上线前须完成内容审核</span></div></footer><div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script>if(window.gsap&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('gsap-ready');gsap.from('.side .metric',{autoAlpha:0,y:16,duration:.68,stagger:.1,ease:'power3.out',clearProps:'transform,opacity,visibility'})}</script>
 <script>document.querySelector('.nav a[href=\'#top\']').classList.add('active');const nav=document.querySelector('#nav'),menu=document.querySelector('#menu');menu.onclick=()=>{const o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',o)};nav.querySelectorAll('a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));const toast=document.querySelector('#toast');function show(s){toast.textContent=s;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('[data-cat]').forEach(d=>d.classList.toggle('hidden',b.dataset.filter!=='all'&&d.dataset.cat!==b.dataset.filter))});const ai={prompt:['提示词与任务设计','目标对象与背景语境','具体任务与可用材料','输出格式和限制条件','来源、核验与不确定性要求'],verify:['生成内容核验','找到可追溯的原始来源','检查作者、日期与适用范围','交叉验证关键数字','标记无法确认的内容'],ethics:['科研伦理与披露','遵循课程或期刊规则','说明AI参与环节','不虚构引用和数据','由提交者承担最终责任'],agri:['智慧农业案例','检查数据采集质量','区分模型预测与现场事实','考虑作物、季节和区域差异','保留农艺专家最终判断']};document.querySelectorAll('[data-ai]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-ai]').forEach(x=>x.classList.remove('active'));b.classList.add('active');const d=ai[b.dataset.ai];document.querySelector('#aiContent').innerHTML=`<h3>${d[0]}</h3><p>本模块建议依次完成：</p><ol>${d.slice(1).map(x=>`<li>${x}</li>`).join('')}</ol>`});
 ;document.querySelectorAll('[data-news]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-news]').forEach(x=>x.classList.remove('active'));b.classList.add('active');['socialNews','campusNews'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.news+'News'))});;document.querySelectorAll('[data-tab]').forEach(function(b){b.onclick=function(){var g=this.dataset.tab;document.querySelectorAll('[data-tab="'+g+'"]').forEach(function(x){x.classList.remove('active')});this.classList.add('active');var p=JSON.parse(this.dataset.panels);var t=this.dataset.show;p.forEach(function(i){document.getElementById(i).classList.toggle('hidden',i!==t)})}})/* Section tab: hide/show on nav click (hero hidden when section shown) */
 ;(function(){var s=document.querySelectorAll('section'),l=document.querySelectorAll('.nav a');document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var id=this.getAttribute('href').slice(1);if(!id)return;if(id==='top'){e.preventDefault();s.forEach(function(x){x.classList.add('hidden')});document.querySelector('.hero').classList.remove('hidden');setTimeout(function(){window.scrollTo({top:0,behavior:'smooth'})},100);return};var t=document.getElementById(id);if(t&&t.tagName==='SECTION'){e.preventDefault();s.forEach(function(x){x.classList.add('hidden')});t.classList.remove('hidden');l.forEach(function(x){x.classList.toggle('active',x.getAttribute('href')==='#'+id)});setTimeout(function(){t.scrollIntoView({behavior:'smooth',block:'start'})},100)}})})})();
