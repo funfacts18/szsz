@@ -15,6 +15,229 @@
 
 
 @media(prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none}.panel{animation:none}.panel:hover,.quick a:hover,.card:hover{transform:none;box-shadow:var(--shadow-soft)}}.page-hero{padding:44px 0;margin-bottom:40px;position:relative;overflow:hidden}.page-hero .micro{font-size:12px;letter-spacing:.16em;color:rgba(255,255,255,.55);font-weight:800}.page-title{font-size:36px;color:#fff;margin:10px 0 0;font-family:"Songti SC",serif;line-height:1.2}.page-hero a{font-size:12px;font-weight:900;white-space:nowrap;color:rgba(255,255,255,.8)}.page-hero a:hover{color:#fff}.news-layout{display:grid;grid-template-columns:195px 1fr;gap:0;min-height:480px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-soft)}.news-index{display:flex;flex-direction:column;gap:0;background:var(--g2);padding:24px 0}#fraud .news-index{background:#e6a098}.news-tab{border:none;background:transparent;border-radius:0;padding:14px 18px;font-size:14px;font-weight:800;color:rgba(255,255,255,.6);cursor:pointer;text-align:left;transition:all .2s}.news-tab:hover{color:#fff;background:rgba(255,255,255,.1)}.news-tab.active{background:#fff;color:var(--g2)}#fraud .news-tab{color:rgba(80,30,20,.6)}#fraud .news-tab:hover{color:rgba(80,30,20,.9);background:rgba(255,255,255,.2)}#fraud .news-tab.active{background:#fff;color:#a3342a}.news-card{background:#fff;border:none;border-radius:0;padding:22px;box-shadow:none}.news-item{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}.news-item:last-child{border:0}.news-icon{width:38px;height:38px;background:var(--blue-light);color:var(--g);border-radius:10px;display:grid;place-items:center;font-weight:900;font-size:16px}.news-meta h3{font-size:15px;margin:0 0 4px;line-height:1.4}.news-meta p{font-size:12px;color:var(--muted);margin:0}.news-link{font-size:12px;color:var(--g);font-weight:900;white-space:nowrap}.news-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}.news-cards{display:flex;flex-direction:column;gap:12px}.news-card-item{border:1px solid var(--line);border-radius:10px;padding:14px}.news-card-item h3{font-size:14px;margin:8px 0 0;line-height:1.5}.news-events{padding-top:16px}.header-btn{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:900;white-space:nowrap;background:var(--lime);color:var(--dark);transition:all .2s;flex-shrink:0}.header-btn:hover{background:var(--g2);color:#fff}@media(max-width:1000px){.news-layout{grid-template-columns:1fr}.news-grid{grid-template-columns:1fr}.nav{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;padding:8px;gap:4px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.06)}.nav a{border:none;padding:12px 14px}.nav.open{display:grid;grid-template-columns:1fr 1fr}.menu{display:block}.dashboard,.ai-layout{grid-template-columns:1fr}.quick{grid-template-columns:repeat(3,1fr)}}@media(max-width:620px){.shell{width:calc(100% - 24px)}.logo img{width:215px}.app-name,.tool{display:none}.header-btn{display:none}.welcome{padding:28px;min-height:390px}.welcome h1{font-size:37px}.side{grid-template-columns:1fr}.metric.wide{grid-column:span 2}.action{flex-direction:column;align-items:flex-start}.quick{grid-template-columns:1fr 1fr}.hero::before,.hero::after{opacity:.35}.section{padding:46px 0}.cards,.contact-grid{grid-template-columns:1fr}.event{grid-template-columns:68px 1fr}.event span{display:none}.footer .shell{display:block}}.page-hero{padding:32px 0}.page-title{font-size:28px}}
+/* Hero information strip: hierarchy through spacing and tone, not boxed cards */
+.side{
+  gap:0;
+  overflow:hidden;
+  border-radius:24px;
+  background:linear-gradient(120deg,rgba(255,255,255,.88),rgba(244,250,252,.72));
+  box-shadow:0 24px 56px rgba(10,61,66,.08);
+  backdrop-filter:blur(14px);
+}
+.side .panel.metric{
+  min-height:156px;
+  padding:28px 32px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.side .panel.metric:hover{
+  transform:none;
+  box-shadow:none;
+}
+.side .metric:first-child{
+  background:linear-gradient(135deg,rgba(21,101,192,.07),transparent 70%);
+}
+.side .metric:nth-child(2){
+  position:relative;
+  padding-left:38px;
+}
+.side .metric:nth-child(2)::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:28px;
+  bottom:28px;
+  width:1px;
+  background:linear-gradient(transparent,rgba(21,101,192,.18),transparent);
+}
+.side .metric.wide{
+  min-height:142px;
+  padding-top:26px;
+  background:linear-gradient(100deg,rgba(196,82,58,.09),rgba(255,255,255,.2) 62%);
+}
+.side .metric.wide::before{
+  content:"";
+  position:absolute;
+  left:32px;
+  right:32px;
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(196,82,58,.35),rgba(196,82,58,.04));
+}
+.side .metric strong{margin-top:12px}
+.side .metric.wide strong{font-size:25px;letter-spacing:.01em}
+
+/* Quick access rail: pill navigation replaces six individual tiles */
+.quick{
+  gap:0;
+  padding:7px;
+  border-radius:999px;
+  background:rgba(255,255,255,.76);
+  box-shadow:0 18px 44px rgba(10,61,66,.08);
+  backdrop-filter:blur(12px);
+}
+.quick a{
+  min-width:0;
+  flex-direction:row;
+  justify-content:center;
+  gap:9px;
+  padding:10px 12px;
+  border-radius:999px;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+  white-space:nowrap;
+}
+.quick a::before{
+  inset:auto 24% 3px;
+  width:auto;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--g),var(--g2));
+  transform:scaleX(0);
+  transform-origin:center;
+  opacity:1;
+  transition:transform .25s ease;
+}
+.quick a:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:25%;
+  bottom:25%;
+  width:1px;
+  background:rgba(10,61,66,.1);
+}
+.quick a:hover{
+  transform:none;
+  color:var(--g);
+  background:rgba(227,242,253,.58);
+  box-shadow:none;
+}
+.quick a:hover::before{transform:scaleX(1)}
+.quick a span{
+  flex:0 0 34px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#eaf6ff,#d7ebfb);
+  box-shadow:inset 0 0 0 1px rgba(21,101,192,.06);
+}
+.quick a:hover span{
+  color:#fff;
+  background:linear-gradient(135deg,var(--g),var(--g2));
+  transform:rotate(-5deg) scale(1.06);
+}
+.quick a:hover span+*{color:var(--g)}
+.quick a:focus-visible{outline:3px solid rgba(21,101,192,.24);outline-offset:2px}
+
+@media(max-width:1000px){
+  .quick{border-radius:24px}
+  .quick a:nth-child(3)::after{display:none}
+}
+@media(max-width:620px){
+  .side{border-radius:20px}
+  .side .panel.metric{padding:24px}
+  .side .metric:nth-child(2){padding-left:24px}
+  .side .metric:nth-child(2)::before{left:24px;right:24px;top:0;bottom:auto;width:auto;height:1px}
+  .side .metric.wide{grid-column:span 1}
+  .side .metric.wide::before{left:24px;right:24px}
+  .quick{border-radius:20px;padding:6px}
+  .quick a{justify-content:flex-start;padding:10px}
+  .quick a:nth-child(3)::after{display:block}
+  .quick a:nth-child(even)::after{display:none}
+}
+
+/* Section pagination: a continuous forest-green rail with quiet dividers */
+.news-layout{
+  border:0;
+  box-shadow:0 22px 54px rgba(10,61,66,.1);
+}
+/* Shared inner-page header; home and anti-fraud keep their own visual identity */
+.section:not(#fraud) > .page-hero{
+  color:#fff;
+  background:#2e5647 !important;
+}
+.section:not(#fraud) > .page-hero .micro{color:rgba(255,255,255,.64)}
+.news-index,
+#fraud .news-index{
+  gap:0;
+  padding:18px 12px;
+  background:
+    radial-gradient(circle at 8% 4%,rgba(160,211,171,.16),transparent 34%),
+    linear-gradient(155deg,#2e5647 0%,#17606a 54%,#123b64 100%);
+  position:relative;
+}
+.news-index::after{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:4px;
+  background:linear-gradient(90deg,#8bcf9a,#d7efcf);
+  opacity:.85;
+}
+.news-tab,
+#fraud .news-tab{
+  position:relative;
+  padding:16px 16px 16px 24px;
+  border:0;
+  border-bottom:1px solid rgba(218,239,225,.14);
+  border-radius:0;
+  color:rgba(232,246,236,.62);
+  background:transparent;
+  transition:color .25s ease,background .25s ease,padding .25s ease;
+}
+.news-tab:last-child{border-bottom:0}
+.news-tab::before{
+  content:"";
+  position:absolute;
+  left:4px;
+  top:25%;
+  bottom:25%;
+  width:3px;
+  border-radius:99px;
+  background:#b8e3b8;
+  transform:scaleY(0);
+  transition:transform .25s ease;
+}
+.news-tab:hover,
+#fraud .news-tab:hover{
+  color:#fff;
+  background:rgba(255,255,255,.055);
+}
+.news-tab.active,
+#fraud .news-tab.active{
+  padding-left:29px;
+  color:#fff;
+  background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.025));
+}
+.news-tab.active::before{transform:scaleY(1)}
+.news-tab:focus-visible{outline:2px solid #b8e3b8;outline-offset:-3px}
+
+@media(max-width:1000px){
+  .news-index,#fraud .news-index{flex-direction:row;padding:8px 10px}
+  .news-tab,#fraud .news-tab{
+    flex:1;
+    padding:13px 16px;
+    border-right:1px solid rgba(218,239,225,.14);
+    border-bottom:0;
+    text-align:center;
+  }
+  .news-tab:last-child{border-right:0}
+  .news-tab::before{
+    left:28%;
+    right:28%;
+    top:auto;
+    bottom:3px;
+    width:auto;
+    height:3px;
+    transform:scaleX(0);
+  }
+  .news-tab.active,#fraud .news-tab.active{padding-left:16px}
+  .news-tab.active::before{transform:scaleX(1)}
+}
 </style></head><body>
 <header class="header"><div class="shell headrow"><span class="app-name">数智素养服务台</span><nav class="nav" id="nav"><a href="#top">首页</a><a href="#news">新闻速递</a><a href="#policy">政策文件</a><a href="#security">安全科普</a><a href="#fraud">主题防诈</a><a href="#ai">AI专区</a><a href="#contact">联系我们</a></nav><a class="btn alt header-btn" href="https://e.ahau.edu.cn" target="_blank" rel="noopener">进入数智安农</a><button class="tool menu" id="menu" aria-expanded="false">☰</button></div></header>
 <main id="top"><section class="hero"><div class="shell"><div class="dashboard"><div class="panel welcome"><div class="slider-container"><div class="slider-track"><div class="slide"><span class="micro">数智安农 · DIGITAL AHAU</span><h1>数智赋能 ·<br>乡村振兴</h1><p>智慧农业引领未来，数字技术赋能田间管理，让每一寸土地焕发新活力。</p></div><div class="slide"><span class="micro">AI + 农业</span><h1>可信使用<br>与数据责任</h1><p>AI助力农业科技创新，数据安全守护每一份研究成果，共建可信数字校园。</p></div><div class="slide"><span class="micro">数字素养 · 从我做起</span><h1>提升数字能力<br>守护信息安全</h1><p>从校园真实场景出发，把信息检索、数据判断、安全防护与AI协作变成可执行的小任务。</p></div></div></div></div><aside class="side"><div class="panel metric"><small>数字网站创办宗旨</small><strong>赋能师生 · 服务三农</strong><p>打造数字素养提升一站式平台</p><div class="progress"><i style="--w:62%"></i></div></div><div class="panel metric"><small>新闻速递</small><div style="margin-top:14px;display:flex;flex-direction:column;gap:10px"><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>校长操海群带队参加2026世界人工智能大会</div><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>学校数字化转型：大平台、大数据、大服务</div><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>AI赋能作物生物育种农学大师讲堂</div></div></div><div class="panel metric wide alert"><small>校园风险提醒</small><strong>警惕“兼职刷单”和“AI换脸”诈骗</strong><p>涉及转账，务必通过原有联系方式二次核实。</p></div></aside></div><div class="quick"><a href="#security"><span>盾</span>安全自测</a><a href="#ai"><span>AI</span>AI工具箱</a><a href="#policy"><span>策</span>政策速查</a><a href="https://mail.ahau.edu.cn" target="_blank" rel="noopener"><span>邮</span>学校邮箱</a><a href="https://myvpn.ahau.edu.cn" target="_blank" rel="noopener"><span>VPN</span>远程访问</a><a href="#contact"><span>问</span>服务支持</a></div></div></section>
