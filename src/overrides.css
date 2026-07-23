@@ -46,6 +46,14 @@
   line-height: 1.35;
 }
 
+.slide:nth-child(1) p {
+  color: #041e39;
+}
+
+.slide:nth-child(2) p {
+  color: #04203e;
+}
+
 .warning-download-all {
   display: inline-flex;
   margin: 8px 0 18px;
