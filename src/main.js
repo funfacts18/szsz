@@ -73,11 +73,16 @@ createApp({
       const directory = event.target.closest('[data-news-directory]')
       const aiButton = event.target.closest('[data-ai]')
       const menu = event.target.closest('#menu')
+      const homeNews = event.target.closest('.side .metric:nth-child(2)')
 
       if (menu) {
         event.preventDefault()
         event.stopImmediatePropagation()
         menuOpen.value = !menuOpen.value
+      } else if (homeNews) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        selectSection('news')
       } else if (navLink || sectionLink) {
         const id = (navLink || sectionLink).getAttribute('href').slice(1)
         if (sectionIds.includes(id)) {
@@ -107,6 +112,18 @@ createApp({
     if (sectionIds.includes(fromHash)) this.selectSection?.(fromHash)
     this.syncSections()
     document.addEventListener('click', this.interceptInteractions, true)
+    const homeNews = document.querySelector('.side .metric:nth-child(2)')
+    if (homeNews) {
+      homeNews.setAttribute('role', 'button')
+      homeNews.setAttribute('tabindex', '0')
+      homeNews.setAttribute('aria-label', '打开新闻速递')
+      homeNews.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          this.selectSection('news')
+        }
+      })
+    }
   },
   beforeUnmount() {
     document.removeEventListener('click', this.interceptInteractions, true)

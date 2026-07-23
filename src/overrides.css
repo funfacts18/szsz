@@ -22,6 +22,20 @@
   display: none !important;
 }
 
+.side .metric:nth-child(2) {
+  cursor: pointer;
+}
+
+.side .metric:nth-child(2):focus-visible {
+  outline: 3px solid rgba(11, 92, 168, 0.5);
+  outline-offset: -3px;
+}
+
+.quick a {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
 @media (min-width: 1001px) {
   .app-name {
     color: #fff;
