@@ -249,6 +249,19 @@
 .nav a.active{color:#fff}
 .nav a.active::before{background:#d8efff;opacity:.22}
 .nav a:hover::before{background:#073f7b;opacity:.28}
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:8px;
+  width:26px;
+  height:2px;
+  border-radius:99px;
+  background:#fff;
+  transform:translateX(-50%) scaleX(0);
+  transition:transform .24s ease;
+}
+.nav a.active::after{transform:translateX(-50%) scaleX(1)}
 .tool{background:rgba(255,255,255,.18);color:#fff}
 .header-btn.btn.alt{background:transparent;border:0;color:#fff;box-shadow:none}
 .header-btn.btn.alt:hover{background:rgba(255,255,255,.14);color:#fff}
