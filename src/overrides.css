@@ -229,6 +229,13 @@
   text-align: justify;
 }
 
+.policy-detail-body h4 {
+  margin: 30px 0 12px;
+  color: #0b5ca8;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 @media (max-width: 620px) {
   .software-warning-item {
     grid-template-columns: 1fr;

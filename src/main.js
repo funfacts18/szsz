@@ -20,7 +20,12 @@ createApp({
       ethics: ['科研伦理与披露', '遵循课程或期刊规则', '说明AI参与环节', '不虚构引用和数据', '由提交者承担最终责任'],
       agri: ['智慧农业案例', '检查数据采集质量', '区分模型预测与现场事实', '考虑作物、季节和区域差异', '保留农艺专家最终判断']
     }
-    let policyNewsMarkup = ''
+    const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]))
+    const formatPolicyBody = (paragraphs) => paragraphs.map((paragraph) => {
+      const safeText = escapeHtml(paragraph)
+      const isHeading = /^(第[一二三四五六七八九十]+章|[一二三四五六七八九十]+、|（[一二三四五六七八九十]+）)/.test(paragraph)
+      return isHeading ? `<h4>${safeText}</h4>` : `<p>${safeText}</p>`
+    }).join('')
 
     const syncSections = () => {
       document.querySelectorAll('main > section').forEach((section) => {
@@ -60,11 +65,10 @@ createApp({
       })
       const newsList = document.querySelector('#news .news-list')
       if (!newsList) return
-      if (!policyNewsMarkup) policyNewsMarkup = newsList.innerHTML
       if (type === 'campus') {
         newsList.innerHTML = campusNews.map((item) => `<article class="news-list-row campus-news-row"><time>${item.date}</time><a href="${item.source}" target="_blank" rel="noopener">${item.title}<span class="campus-news-source">官网原文 ↗</span></a></article>`).join('')
       } else {
-        newsList.innerHTML = nationalPolicies.map((item) => `<article class="news-list-row national-policy-row"><time>${item.date}</time><button type="button" data-policy-article="${item.id}">${item.title}<span class="national-policy-open">阅读详情 →</span></button></article>`).join('')
+        newsList.innerHTML = nationalPolicies.map((item) => `<article class="news-list-row national-policy-row"><time>${escapeHtml(item.date)}</time><button type="button" data-policy-article="${escapeHtml(item.id)}">${escapeHtml(item.title)}<span class="national-policy-open">阅读详情 →</span></button></article>`).join('')
       }
     }
 
@@ -73,7 +77,7 @@ createApp({
       const newsList = document.querySelector('#news .news-list')
       if (!article || !newsList) return
       openPolicyArticle.value = id
-      newsList.innerHTML = `<article class="national-policy-detail"><button type="button" class="national-policy-back" data-policy-back="true">← 返回国家政策</button><nav class="policy-breadcrumb" aria-label="当前位置">首页 <span>›</span> 新闻速递 <span>›</span> 国家政策</nav><h3>${article.title}</h3><div class="policy-detail-meta"><span>信息来源：${article.source}</span><span>发布日期：${article.date}</span></div><div class="policy-detail-body">${article.body.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div></article>`
+      newsList.innerHTML = `<article class="national-policy-detail"><button type="button" class="national-policy-back" data-policy-back="true">← 返回国家政策</button><nav class="policy-breadcrumb" aria-label="当前位置">首页 <span>›</span> 新闻速递 <span>›</span> 国家政策</nav><h3>${escapeHtml(article.title)}</h3><div class="policy-detail-meta"><span>信息来源：${escapeHtml(article.source)}</span><span>发布日期：${escapeHtml(article.date)}</span></div><div class="policy-detail-body">${formatPolicyBody(article.body)}</div></article>`
       nextTick(() => document.querySelector('#news .news-directory')?.scrollIntoView({ block: 'start', behavior: 'auto' }))
     }
 
