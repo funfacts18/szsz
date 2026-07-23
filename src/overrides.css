@@ -1,0 +1,23 @@
+/* Latest homepage refinements for the Vite/Vue build. */
+@media (max-width: 1000px) {
+  .headrow .menu {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 621px) {
+  .welcome {
+    min-height: 466px;
+  }
+
+  .slide h1 {
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.side .metric.wide.alert {
+  display: none !important;
+}

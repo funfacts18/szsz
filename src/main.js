@@ -1,4 +1,5 @@
 import { createApp, nextTick, ref, watch } from 'vue'
+import './overrides.css'
 
 const sectionIds = ['top', 'news', 'policy', 'security', 'fraud', 'ai', 'contact']
 
