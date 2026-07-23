@@ -372,6 +372,37 @@
 .footer-entry{align-self:center;min-width:140px;padding:14px 18px;border:1px solid rgba(255,255,255,.48);color:#fff;text-align:center;font-size:12px;font-weight:800;letter-spacing:.08em}
 .footer-bottom{display:flex!important;justify-content:space-between;padding-top:16px;color:rgba(255,255,255,.68);font-size:11px}
 @media(max-width:720px){.footer{padding:34px 0 16px}.footer-main{grid-template-columns:1fr;gap:22px}.footer-entry{justify-self:start}.footer-bottom{display:grid!important;gap:6px}}
+/* Distinct content formats for policy, anti-fraud, and contact */
+.policy .news-layout,.fraud .news-layout,#contact .news-layout{align-items:stretch}
+.policy .news-index{padding:26px 18px;background:linear-gradient(165deg,#0d5fa9,#39795d);border-radius:18px 0 0 18px}
+.policy .news-tab{color:rgba(255,255,255,.72);text-align:left;font-weight:800}
+.policy .news-tab.active{color:#fff;background:rgba(255,255,255,.14);border-left:3px solid #cceab6}
+.policy .news-card{padding:18px 34px;background:#fff;box-shadow:0 15px 36px rgba(22,66,89,.10)}
+.policy .news-item{min-height:112px;padding:20px 0;border-bottom:1px solid #dce5e5}
+.policy .news-item:last-child{border-bottom:0}
+.policy .news-icon{width:44px;height:44px;border-radius:0;background:#e4f0fb;color:#0b5ca8}
+.policy .news-meta h3{font-size:18px}.policy .news-meta p{margin-top:7px;color:#5e7276}
+.policy .news-link{min-width:68px;color:#0b5ca8;font-weight:800}
+.fraud .news-layout{grid-template-columns:1fr;gap:20px}
+.fraud .news-index{display:flex;gap:10px;padding:0;background:transparent}
+.fraud .news-tab{flex:1;padding:15px 18px;border:1px solid #ecd6d2;border-radius:12px;background:#fff7f5;color:#8f424c;font-weight:800}
+.fraud .news-tab.active{background:#8f424c;color:#fff;border-color:#8f424c}
+.fraud .news-card{padding:10px;background:transparent;box-shadow:none}
+.fraud #fraudType,.fraud #fraudGuide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.fraud .news-item{min-height:150px;padding:24px;border:1px solid #f0ddd8;border-radius:16px;background:#fff;box-shadow:0 10px 26px rgba(113,48,39,.07);align-items:flex-start}
+.fraud .news-icon{flex:0 0 50px;width:50px;height:50px;border-radius:14px;background:#fae8e5;color:#b24b4d;font-size:20px}
+.fraud .news-meta h3{font-size:18px;color:#74343b}.fraud .news-meta p{margin-top:8px;line-height:1.7}
+#contact .news-layout{grid-template-columns:minmax(0,1fr) 280px;gap:28px}
+#contact .news-index{order:2;padding:28px 22px;background:linear-gradient(155deg,#0b5ca8,#2f806b);border-radius:0 18px 18px 0}
+#contact .news-tab{color:rgba(255,255,255,.75);text-align:left;font-weight:800}
+#contact .news-tab.active{color:#fff;background:rgba(255,255,255,.13);border-left:3px solid #d3ecbd}
+#contact .news-card{padding:10px;background:transparent;box-shadow:none}
+#contact #contactInfo,#contact #contactService{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#contact .news-item{min-height:150px;padding:24px;border:0;border-radius:16px;background:#fff;box-shadow:0 12px 30px rgba(27,82,110,.10);align-items:flex-start}
+#contact .news-icon{flex:0 0 48px;width:48px;height:48px;border-radius:50%;background:#e4f2fc;color:#0b5ca8}
+#contact .news-meta h3{font-size:17px}.news-meta p{line-height:1.65}
+#contact .news-link{align-self:flex-end;margin-left:auto;color:#0b5ca8;font-weight:800}
+@media(max-width:800px){.policy .news-index{border-radius:16px}.policy .news-card{padding:16px}.fraud #fraudType,.fraud #fraudGuide,#contact #contactInfo,#contact #contactService{grid-template-columns:1fr}#contact .news-layout{grid-template-columns:1fr}#contact .news-index{order:0;border-radius:16px}.fraud .news-index{display:grid;grid-template-columns:1fr 1fr}}
 </style></head><body>
 <header class="header"><div class="shell headrow"><span class="app-name">数智素养服务台</span><nav class="nav" id="nav"><a href="#top">首页</a><a href="#news">新闻速递</a><a href="#policy">政策文件</a><a href="#security">安全科普</a><a href="#fraud">主题防诈</a><a href="#ai">AI专区</a><a href="#contact">联系我们</a></nav><a class="btn alt header-btn" href="https://e.ahau.edu.cn" target="_blank" rel="noopener">进入数智安农</a><button class="tool menu" id="menu" aria-expanded="false">☰</button></div></header>
 <main id="top"><section class="hero"><div class="shell"><div class="dashboard"><div class="panel welcome"><div class="slider-container"><div class="slider-track"><div class="slide"><span class="micro">数智安农 · DIGITAL AHAU</span><h1>数智赋能 ·<br>乡村振兴</h1><p>智慧农业引领未来，数字技术赋能田间管理，让每一寸土地焕发新活力。</p></div><div class="slide"><span class="micro">AI + 农业</span><h1>可信使用<br>与数据责任</h1><p>AI助力农业科技创新，数据安全守护每一份研究成果，共建可信数字校园。</p></div><div class="slide"><span class="micro">数字素养 · 从我做起</span><h1>提升数字能力<br>守护信息安全</h1><p>从校园真实场景出发，把信息检索、数据判断、安全防护与AI协作变成可执行的小任务。</p></div></div></div></div><aside class="side"><div class="panel metric"><small>数字网站创办宗旨</small><strong>赋能师生 · 服务三农</strong><p>打造数字素养提升一站式平台</p><div class="progress"><i style="--w:62%"></i></div></div><div class="panel metric"><small>新闻速递</small><div style="margin-top:14px;display:flex;flex-direction:column;gap:10px"><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>校长操海群带队参加2026世界人工智能大会</div><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>学校数字化转型：大平台、大数据、大服务</div><div style="font-size:12px;line-height:1.5"><span style="color:var(--g);font-weight:900">· </span>AI赋能作物生物育种农学大师讲堂</div></div></div><div class="panel metric wide alert"><small>校园风险提醒</small><strong>警惕“兼职刷单”和“AI换脸”诈骗</strong><p>涉及转账，务必通过原有联系方式二次核实。</p></div></aside></div><div class="quick"><a href="#security"><span>盾</span>安全自测</a><a href="#ai"><span>AI</span>AI工具箱</a><a href="#policy"><span>策</span>政策速查</a><a href="https://mail.ahau.edu.cn" target="_blank" rel="noopener"><span>邮</span>学校邮箱</a><a href="https://myvpn.ahau.edu.cn" target="_blank" rel="noopener"><span>VPN</span>远程访问</a><a href="#contact"><span>问</span>服务支持</a></div></div></section>
