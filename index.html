@@ -320,19 +320,19 @@
 .security-compact-copy{min-height:118px;align-self:center;border-bottom:2px solid rgba(90,32,165,.75)}
 @media(max-width:1000px){.security-feature-grid,.security-compact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.security-feature-grid .security-feature:last-child,.security-compact-grid .security-compact:last-child{grid-column:span 2}}
 @media(max-width:620px){#security .security-format{padding-top:34px}.security-feature-grid,.security-compact-grid{grid-template-columns:1fr;gap:16px}.security-feature-grid .security-feature:last-child,.security-compact-grid .security-compact:last-child{grid-column:span 1}.security-compact{min-height:150px}}
-#news .news-directory{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:54px;padding:42px 0 16px;align-items:start}
+#news .news-directory{display:grid;grid-template-columns:220px minmax(0,1fr);gap:54px;padding:42px 0 16px;align-items:start}
 #news .news-list{background:#fff}
 #news .news-list-row{display:grid;grid-template-columns:146px minmax(0,1fr);align-items:center;min-height:96px;border-bottom:1px solid #e4e8eb}
 #news .news-list-row:last-child{border-bottom:0}
-#news .news-list-row time{padding:0 26px;color:#ca3030;font-size:14px;font-variant-numeric:tabular-nums;border-right:1px solid #d9dde1}
+#news .news-list-row time{padding:0 26px;color:#0b5ca8;font-size:14px;font-variant-numeric:tabular-nums;border-right:1px solid #d9dde1}
 #news .news-list-row a{padding:18px 24px;color:var(--ink);font-size:17px;font-weight:800;line-height:1.5;transition:color .2s ease,transform .2s ease}
-#news .news-list-row a:hover{color:#b11e26;transform:translateX(4px)}
-#news .news-directory-tabs{position:relative;overflow:hidden;min-height:352px;padding:14px 12px;background:#f7f8f8;border-right:4px solid #b52028}
+#news .news-list-row a:hover{color:#0b5ca8;transform:translateX(4px)}
+#news .news-directory-tabs{order:-1;position:relative;overflow:hidden;min-height:352px;padding:14px 12px;background:#f7f8f8;border-left:4px solid #0b5ca8}
 #news .news-directory-tabs::after{content:"";position:absolute;inset:auto 0 0;height:150px;background:url('assets/section-texture.png') bottom right/cover no-repeat;opacity:.38;pointer-events:none}
 #news .news-directory-tabs button{position:relative;z-index:1;display:block;width:100%;padding:19px 28px;border:0;border-bottom:1px dashed #dedede;background:transparent;color:var(--ink);text-align:left;font-size:17px;cursor:pointer}
-#news .news-directory-tabs button.active{margin-left:-20px;padding-left:36px;background:#fff;color:#d3982a;border-left:7px solid #e5bd63}
-#news .news-directory-tabs button:focus-visible{outline:2px solid #b52028;outline-offset:-2px}
-@media(max-width:800px){#news .news-directory{grid-template-columns:1fr;gap:24px}#news .news-directory-tabs{order:-1;min-height:0;display:flex;padding:0;border-right:0;border-bottom:4px solid #b52028}#news .news-directory-tabs::after{display:none}#news .news-directory-tabs button{flex:1;text-align:center;border-bottom:0}#news .news-directory-tabs button.active{margin:0;padding-left:28px;border-left:0;border-bottom:5px solid #e5bd63}}
+#news .news-directory-tabs button.active{margin-right:-20px;padding-right:36px;background:#fff;color:#0b5ca8;border-right:7px solid #75b9ea}
+#news .news-directory-tabs button:focus-visible{outline:2px solid #0b5ca8;outline-offset:-2px}
+@media(max-width:800px){#news .news-directory{grid-template-columns:1fr;gap:24px}#news .news-directory-tabs{order:-1;min-height:0;display:flex;padding:0;border-left:0;border-bottom:4px solid #0b5ca8}#news .news-directory-tabs::after{display:none}#news .news-directory-tabs button{flex:1;text-align:center;border-bottom:0}#news .news-directory-tabs button.active{margin:0;padding-left:28px;border-right:0;border-bottom:5px solid #75b9ea}}
 @media(max-width:520px){#news .news-list-row{grid-template-columns:1fr;gap:0;padding:16px 0}#news .news-list-row time{padding:0 20px;border-right:0}#news .news-list-row a{padding:8px 20px 0;font-size:15px}}
 .section:not(.hero):not(#fraud) > .page-hero{
   background-color:#2e5647 !important;
