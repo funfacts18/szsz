@@ -1,10 +1,9 @@
-# 数智安农 · 素养服务台
+# 数智安农 · 数字素养服务台
 
-安徽农业大学数智素养提升平台 — 服务台型设计方案
+安徽农业大学数智素养提升平台演示网站，现已迁移为 Vue 3 + Vite 单页应用。
 
-## 项目结构
+- 线上地址：https://szsz-funfacts18.netlify.app
+- 本地开发：`npm install && npm run dev`
+- 生产构建：`npm run build`
 
-| 文件 | 说明 |
-|------|------|
-| index.html | 独立完整的页面 HTML（单文件，含 CSS + JS）|
-| DESIGN.md | 完整的设计规范文档 |
+Netlify 使用 `netlify.toml` 自动构建并发布 `dist` 目录。
