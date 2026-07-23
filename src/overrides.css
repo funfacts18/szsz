@@ -16,6 +16,16 @@
     display: flex;
     align-items: center;
   }
+
+  .slide:nth-child(1) h1 {
+    min-height: 154px;
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  .slide:nth-child(2) h1 {
+    font-weight: 600;
+  }
 }
 
 .side .metric.wide.alert {

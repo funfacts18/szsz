@@ -29,10 +29,11 @@ createApp({
       document.querySelector('#nav')?.classList.toggle('open', menuOpen.value)
     }
 
-    const selectSection = (id) => {
+    const selectSection = (id, newsType) => {
       if (!sectionIds.includes(id)) return
       activeSection.value = id
       menuOpen.value = false
+      if (id === 'news' && newsType) selectNewsDirectory(newsType)
       window.history.replaceState(null, '', id === 'top' ? '#top' : `#${id}`)
       nextTick(() => window.scrollTo({ top: 0, behavior: 'auto' }))
     }
@@ -88,7 +89,7 @@ createApp({
       } else if (homeNews) {
         event.preventDefault()
         event.stopImmediatePropagation()
-        selectSection('news')
+        selectSection('news', 'campus')
       } else if (navLink || sectionLink) {
         const id = (navLink || sectionLink).getAttribute('href').slice(1)
         if (sectionIds.includes(id)) {
@@ -111,18 +112,38 @@ createApp({
       }
     }
 
-    return { interceptInteractions, selectAi, selectSection, syncSections }
+    return { interceptInteractions, selectAi, selectNewsDirectory, selectSection, syncSections }
   },
   mounted() {
     const fromHash = window.location.hash.slice(1)
     if (sectionIds.includes(fromHash)) this.selectSection?.(fromHash)
     this.syncSections()
+    const headerLink = document.querySelector('.header-btn')
+    if (headerLink) headerLink.setAttribute('href', 'https://i.ahau.edu.cn/')
+
+    const directoryButtons = [...document.querySelectorAll('#news [data-news-directory]')]
+    const categorySetup = [
+      { type: 'policy', label: '国家政策' },
+      { type: 'campus', label: '校内新闻' }
+    ]
+    directoryButtons.slice(0, 2).forEach((button, index) => {
+      button.dataset.newsDirectory = categorySetup[index].type
+      button.textContent = categorySetup[index].label
+    })
+    directoryButtons.slice(2).forEach((button) => button.remove())
+    document.querySelectorAll('#news .news-list-row').forEach((row, index) => {
+      row.dataset.newsList = index < 3 ? 'campus' : 'policy'
+    })
+    this.selectNewsDirectory('campus')
+
     const firstAiTab = document.querySelector('[data-ai="prompt"]')
     if (firstAiTab) firstAiTab.textContent = '软件预警'
     this.selectAi('prompt')
     document.addEventListener('click', this.interceptInteractions, true)
     const homeNews = document.querySelector('.side .metric:nth-child(2)')
     if (homeNews) {
+      const label = homeNews.querySelector('small')
+      if (label) label.textContent = '校内新闻'
       homeNews.setAttribute('role', 'button')
       homeNews.setAttribute('tabindex', '0')
       homeNews.setAttribute('aria-label', '打开新闻速递')
