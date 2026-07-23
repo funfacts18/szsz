@@ -121,6 +121,25 @@ createApp({
     const headerLink = document.querySelector('.header-btn')
     if (headerLink) headerLink.setAttribute('href', 'https://i.ahau.edu.cn/')
 
+    const policyNav = document.querySelector('#nav a[href="#policy"]')
+    if (policyNav) policyNav.textContent = '政策解读'
+    const policySection = document.querySelector('#policy')
+    if (policySection) {
+      const policyMicro = policySection.querySelector('.page-hero .micro')
+      const policyTitle = policySection.querySelector('.page-hero .page-title')
+      const policyLink = policySection.querySelector('.page-hero a')
+      const policyTabs = [...policySection.querySelectorAll('[data-tab="policy"]')]
+      if (policyMicro) policyMicro.textContent = '02 / POLICY INTERPRETATION'
+      if (policyTitle) policyTitle.textContent = '政策解读'
+      if (policyLink) policyLink.textContent = '政策解读 →'
+      if (policyTabs[0]) {
+        policyTabs[0].textContent = '政策解读'
+        policyTabs[0].classList.add('active')
+      }
+      policyTabs.slice(1).forEach((tab) => tab.remove())
+      policySection.querySelector('#policySchool')?.remove()
+    }
+
     const directoryButtons = [...document.querySelectorAll('#news [data-news-directory]')]
     const categorySetup = [
       { type: 'policy', label: '国家政策' },
