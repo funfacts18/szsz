@@ -54,6 +54,10 @@
   color: #04203e;
 }
 
+.slide:nth-child(3) p {
+  color: #09325d;
+}
+
 .warning-download-all {
   display: inline-flex;
   margin: 8px 0 18px;
