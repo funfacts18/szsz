@@ -104,7 +104,7 @@ for index, url in enumerate(URLS, start=1):
         filename = f"{index:02d}-{image_index:02d}{suffix}"
         try:
             (ASSET_DIR / filename).write_bytes(request_bytes(image_url, url))
-            replacement = f"/resources/research-exchange/{filename}"
+            replacement = f"resources/research-exchange/{filename}"
         except Exception:
             replacement = image_url
         content = content.replace(f"__IMAGE_{image_index - 1}__", replacement)
