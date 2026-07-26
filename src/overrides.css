@@ -1274,14 +1274,18 @@
 
 .data-element-quiz {
   display: grid;
-  grid-template-columns: minmax(220px, .72fr) minmax(0, 2.45fr) minmax(190px, .72fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, .3fr);
+  grid-template-areas:
+    "heading result"
+    "questions result";
+  gap: 14px 24px;
   align-items: stretch;
   padding: 28px;
 }
 
 .data-element-quiz-heading {
-  align-self: center;
+  grid-area: heading;
+  align-self: start;
 }
 
 .data-element-quiz-heading small,
@@ -1311,6 +1315,7 @@
 }
 
 .data-element-quiz-grid {
+  grid-area: questions;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
@@ -1389,6 +1394,7 @@
 }
 
 .data-element-result {
+  grid-area: result;
   display: grid;
   align-content: center;
   justify-items: center;
@@ -1605,44 +1611,54 @@
   gap: 14px;
 }
 
-.data-element-actions a {
+.data-element-actions a,
+.data-element-actions button {
   position: relative;
   display: grid;
+  width: 100%;
   min-height: 183px;
   padding: 22px;
   border: 1px solid rgba(186, 225, 255, .32);
   background: rgba(255, 255, 255, .06);
   color: #fff;
+  font: inherit;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
   transition: background .2s ease, transform .2s ease;
 }
 
-.data-element-actions a:hover {
+.data-element-actions a:hover,
+.data-element-actions button:hover {
   background: rgba(255, 255, 255, .14);
   transform: translateY(-3px);
 }
 
-.data-element-actions a span {
+.data-element-actions a span,
+.data-element-actions button span {
   color: #91d3ff;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: .11em;
 }
 
-.data-element-actions a strong {
+.data-element-actions a strong,
+.data-element-actions button strong {
   align-self: end;
   margin-top: 17px;
   font: 700 23px/1.2 "Songti SC", "STSong", serif;
 }
 
-.data-element-actions a small {
+.data-element-actions a small,
+.data-element-actions button small {
   margin-top: 9px;
   color: #d3e8fa;
   font-size: 12px;
   line-height: 1.55;
 }
 
-.data-element-actions a b {
+.data-element-actions a b,
+.data-element-actions button b {
   position: absolute;
   right: 20px;
   bottom: 17px;
@@ -1650,9 +1666,81 @@
   font-size: 22px;
 }
 
+.data-element-actions.resource-mode {
+  grid-template-columns: minmax(220px, .7fr) minmax(0, 2.3fr);
+  gap: 30px;
+  position: relative;
+  align-items: start;
+}
+
+.data-element-resource-heading {
+  padding-top: 8px;
+}
+
+.data-element-resource-list {
+  display: grid;
+  gap: 12px;
+}
+
+.data-element-resource-list a {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) max-content;
+  gap: 16px;
+  align-items: center;
+  min-height: 92px;
+  padding: 18px 20px;
+}
+
+.data-element-resource-list a > span {
+  color: #91d3ff;
+  font: 900 13px/1 Arial, sans-serif;
+  letter-spacing: .08em;
+}
+
+.data-element-resource-list a > div {
+  display: grid;
+  gap: 6px;
+}
+
+.data-element-resource-list a strong {
+  align-self: auto;
+  margin: 0;
+  font-size: 19px;
+}
+
+.data-element-resource-list a small {
+  margin: 0;
+}
+
+.data-element-resource-list a b {
+  position: static;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.data-element-directory-back {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: auto;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b8e2ff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.data-element-directory-back:hover {
+  background: transparent;
+  color: #fff;
+  transform: none;
+}
+
 @media (max-width: 1040px) {
   .data-element-quiz {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, .34fr);
   }
 
   .data-element-quiz-heading {
@@ -1680,6 +1768,10 @@
   .data-element-actions {
     grid-template-columns: 1fr;
   }
+
+  .data-element-actions.resource-mode {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1693,6 +1785,14 @@
   .data-element-flow,
   .data-element-actions {
     padding: 23px 20px;
+  }
+
+  .data-element-quiz {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "questions"
+      "result";
   }
 
   .data-element-quiz-grid,
@@ -1738,7 +1838,18 @@
     transform: translateX(50%) rotate(90deg);
   }
 
-  .data-element-actions a {
+  .data-element-actions a,
+  .data-element-actions button {
     min-height: 132px;
+  }
+
+  .data-element-resource-list a {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    min-height: 0;
+  }
+
+  .data-element-resource-list a > span {
+    display: none;
   }
 }

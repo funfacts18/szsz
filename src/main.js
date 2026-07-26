@@ -154,6 +154,39 @@ createApp({
         }).join('')}</div>${selected !== null ? `<p class="data-element-explanation">${item.note}</p>` : ''}</article>`
       }).join('')}</div><aside class="data-element-result ${answeredCount === dataElementQuizQuestions.length ? 'complete' : ''}"><small>${answeredCount === dataElementQuizQuestions.length ? '测验完成' : `已完成 ${answeredCount} / ${dataElementQuizQuestions.length}`}</small><strong>${result[0]}</strong><b>${score}<em>/ ${dataElementQuizQuestions.length}</em></b><p>${result[1]}</p>${answeredCount === dataElementQuizQuestions.length ? '<button type="button" data-element-quiz-reset>再测一次</button>' : ''}</aside>`
     }
+    const dataElementDirectories = {
+      files: {
+        label: '相关文件',
+        intro: '收录数据要素建设的权威政策文件，点击即可查看官方原文。',
+        items: [{
+          title: '中共中央 国务院关于构建数据基础制度更好发挥数据要素作用的意见',
+          source: '商务部 · 中国政府网转载 · 2023-02-06',
+          url: 'https://www.mofcom.gov.cn/zcfb/zgdwjjmywg/art/2023/art_af3b34279db4451cb96715d99d761977.html'
+        }]
+      },
+      rights: {
+        label: '个人数据权益',
+        intro: '个人数据权益相关法律目录。',
+        items: [
+          { title: '中华人民共和国网络安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/zgrdw/npc/xinwen/2016-11/07/content_2001605.htm' },
+          { title: '中华人民共和国数据安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/c2/c30834/202106/t20210610_311888.html' },
+          { title: '中华人民共和国个人信息保护法', source: '全国人大网', url: 'http://www.npc.gov.cn/npc/c2/c30834/202108/t20210820_313088.html' }
+        ]
+      }
+    }
+    const renderDataElementActions = () => {
+      const actions = document.querySelector('.data-element-actions')
+      if (!actions) return
+      actions.classList.remove('resource-mode')
+      actions.innerHTML = `<div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、权威文件与个人权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><button type="button" data-element-directory="files"><span>02</span><strong>相关文件</strong><small>查看数据要素建设的权威政策文件。</small><b>→</b></button><button type="button" data-element-directory="rights"><span>03</span><strong>个人数据权益</strong><small>查看个人数据权益相关法律目录。</small><b>→</b></button></nav>`
+    }
+    const renderDataElementDirectory = (key) => {
+      const actions = document.querySelector('.data-element-actions')
+      const directory = dataElementDirectories[key]
+      if (!actions || !directory) return
+      actions.classList.add('resource-mode')
+      actions.innerHTML = `<div class="data-element-resource-heading"><small>DATA ELEMENTS / RESOURCE DIRECTORY</small><h3>${directory.label}</h3><p>${directory.intro}</p></div><div class="data-element-resource-list">${directory.items.map((item, index) => `<a href="${item.url}" target="_blank" rel="noopener"><span>${String(index + 1).padStart(2, '0')}</span><div><strong>${item.title}</strong><small>${item.source}</small></div><b>查看原文 ↗</b></a>`).join('')}</div><button type="button" class="data-element-directory-back" data-element-directory-back>← 返回学习入口</button>`
+    }
     const startHomeQuiz = () => {
       quizStep = 0
       quizScore = 0
@@ -319,6 +352,8 @@ createApp({
       const securityQuizReset = event.target.closest('[data-security-quiz-reset]')
       const dataElementAnswer = event.target.closest('[data-element-answer]')
       const dataElementQuizReset = event.target.closest('[data-element-quiz-reset]')
+      const dataElementDirectory = event.target.closest('[data-element-directory]')
+      const dataElementDirectoryBack = event.target.closest('[data-element-directory-back]')
 
       if (menu) {
         event.preventDefault()
@@ -379,6 +414,14 @@ createApp({
         event.stopImmediatePropagation()
         dataElementSelections.fill(null)
         renderDataElementQuiz()
+      } else if (dataElementDirectory) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        renderDataElementDirectory(dataElementDirectory.dataset.elementDirectory)
+      } else if (dataElementDirectoryBack) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        renderDataElementActions()
       } else if (homeNews) {
         event.preventDefault()
         event.stopImmediatePropagation()
@@ -441,7 +484,7 @@ createApp({
       }
     }
 
-    return { interceptInteractions, renderCaseFiles, renderDataElementQuiz, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
+    return { interceptInteractions, renderCaseFiles, renderDataElementActions, renderDataElementDirectory, renderDataElementQuiz, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
   },
   mounted() {
     const fromHash = window.location.hash.slice(1)
@@ -548,6 +591,7 @@ createApp({
     if (dataElementsSection) {
       dataElementsSection.innerHTML = `<div class="page-hero data-elements-hero"><div class="shell"><span class="micro">07 / DATA ELEMENTS</span><h2 class="page-title">数据要素</h2></div></div><div class="shell data-elements-directory"><section class="data-element-quiz" aria-live="polite"></section><section class="data-element-concepts"><div class="data-element-section-title"><span>01</span><div><small>CORE CONCEPTS</small><h3>数据要素，到底是什么？</h3></div></div><p class="data-element-definition">数据要素，是指能够直接投入生产、创造新价值的数据资源；它是继土地、劳动力、资本、技术之后的第五大生产要素。</p><div class="data-element-concept-cards"><article><strong>数据</strong><p>原始的信息记录</p><small>未开采的原油</small></article><article><strong>数据资源</strong><p>初步整理，有一定价值</p><small>已开采的原油</small></article><article class="featured"><strong>数据要素</strong><p>直接参与生产、创造新价值</p><small>精炼后的汽油，驱动引擎</small></article></div></section><section class="data-element-flow"><div class="data-element-section-title"><span>02</span><div><small>DATA FLOW</small><h3>一条数据从产生到赚钱，走了几步？</h3></div></div><div class="data-element-flow-steps"><article><b>01</b><strong>产生数据</strong><p>你在数字场景中的点击、支付与选择。</p></article><i aria-hidden="true">→</i><article><b>02</b><strong>采集加工</strong><p>企业采集、清洗、脱敏并整合数据。</p></article><i aria-hidden="true">→</i><article><b>03</b><strong>合规交易</strong><p>在合规、可信环境下进行数据流通。</p></article><i aria-hidden="true">→</i><article><b>04</b><strong>应用增值</strong><p>用数据改善服务、效率与决策。</p></article></div></section><section class="data-element-actions"><div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、课程学习与个人权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><a href="#downloads"><span>02</span><strong>相关课程</strong><small>系统学习数据要素与数字经济知识。</small><b>→</b></a><a href="#security"><span>03</span><strong>个人数据权益</strong><small>了解数据权益与个人信息保护方式。</small><b>→</b></a></nav></section></div>`
       this.renderDataElementQuiz()
+      this.renderDataElementActions()
     }
 
     const firstAiTab = document.querySelector('[data-ai="prompt"]')
