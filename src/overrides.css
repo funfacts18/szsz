@@ -315,208 +315,171 @@
   height: auto;
 }
 
-.security-video-card video {
-  display: block;
-  width: 100%;
-  height: 218px;
-  background: #f7fbf7;
-  object-fit: contain;
+/* Homepage information area: calendar, campus news, and a short literacy check. */
+@media (min-width: 1001px) {
+  .header .headrow {
+    gap: 12px;
+  }
+
+  .header .nav {
+    gap: 0;
+    margin: 0 0 0 auto;
+  }
+
+  .header .nav a {
+    padding: 18px 10px 10px;
+    font-size: 13px;
+  }
 }
 
-.security-placeholder-card .security-media {
-  display: block;
-  width: 100%;
-  height: 218px;
-  background: #eaf1f5;
+.side .panel.metric.home-calendar,
+.side .panel.metric.home-campus-news {
+  min-height: 190px;
 }
 
-.security-placeholder-card .security-media {
+.side .panel.metric.home-calendar {
+  background: linear-gradient(135deg, rgba(21, 101, 192, .10), rgba(255, 255, 255, .15) 68%);
+}
+
+.home-calendar > strong {
+  margin: 8px 0 10px !important;
+  color: #0b5ca8 !important;
+  font-size: 25px !important;
+}
+
+.home-event-list {
   display: grid;
-  place-items: center;
-  color: #8b9ba4;
-  font-size: 14px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 7px 15px;
+  color: #50656c;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
-.security-feature-copy {
-  padding-top: 24px;
-}
-
-.security-card-meta {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  color: #93a1a8;
-}
-
-.security-card-meta strong {
-  color: #005b55;
-  font-size: 26px;
-}
-
-.security-card-meta em,
-.security-compact-copy em {
-  margin-left: auto;
+.home-event-list span:nth-child(odd) {
   color: #0b5ca8;
-  font-size: 12px;
-  font-style: normal;
   font-weight: 800;
-}
-
-.security-feature-copy h4,
-.security-compact-copy h4 {
-  margin: 12px 0 7px;
-  color: var(--ink);
-  font-size: 17px;
-  line-height: 1.5;
-}
-
-.security-feature-copy p,
-.security-compact-copy p {
-  margin: 0 0 18px;
-  color: #89969c;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.security-file-icon {
-  align-self: center;
-  display: grid;
-  place-items: center;
-  width: 70px;
-  min-height: 90px;
-  background: #0b5ca8;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 900;
-}
-
-.fraud-education-list {
-  display: grid;
-}
-
-.fraud-education-row {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  align-items: stretch;
-  border-bottom: 1px solid #eadde0;
-}
-
-.fraud-education-row:last-child {
-  border-bottom: 0;
-}
-
-.fraud-education-row time {
-  display: grid;
-  place-items: center;
-  padding: 18px 12px;
-  color: #9d4350;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.fraud-education-row button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 24px;
-  border: 0;
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  font: inherit;
-  font-weight: 800;
-  line-height: 1.55;
-  text-align: left;
-}
-
-.fraud-education-row button:hover {
-  color: #9d4350;
-}
-
-.fraud-education-row em {
-  flex: 0 0 auto;
-  color: #9d4350;
-  font-size: 12px;
-  font-style: normal;
   white-space: nowrap;
 }
 
-.fraud-education-detail {
-  padding: 28px clamp(20px, 5vw, 56px) 52px;
+.home-event-list b {
+  margin-right: 2px;
+  font-size: 15px;
 }
 
-.fraud-education-back {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #9d4350;
+.side .panel.metric.home-campus-news {
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 800;
 }
 
-.fraud-education-detail > h3 {
-  margin: 30px auto 12px;
-  color: var(--ink);
-  font-family: "Songti SC", "STSong", serif;
-  font-size: clamp(23px, 3vw, 32px);
-  line-height: 1.5;
-  text-align: center;
+.side .panel.metric.home-campus-news:hover {
+  background: linear-gradient(135deg, rgba(56, 142, 60, .08), rgba(255, 255, 255, .1));
 }
 
-.fraud-education-meta {
-  margin-bottom: 30px;
-  color: #7d898f;
-  font-size: 13px;
-  text-align: center;
+.home-campus-news .home-news-list {
+  gap: 8px;
+  margin-top: 8px;
 }
 
-.fraud-education-body {
-  max-width: 820px;
-  margin: 0 auto;
-  color: #263840;
-  font-size: 16px;
-  line-height: 2;
+.home-campus-news .home-news-list a {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
-.fraud-education-body p {
-  margin: 0 0 18px;
-}
-
-.fraud-education-body img {
-  display: block;
-  max-width: 100%;
+.side .metric.wide.home-literacy-quiz {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 166px;
   height: auto;
-  margin: 22px auto;
+  gap: 26px;
+  padding: 24px 32px;
+  background: linear-gradient(100deg, rgba(11, 92, 168, .11), rgba(255, 255, 255, .62) 64%);
 }
 
-.fraud-education-body table {
-  width: 100%;
-  border-collapse: collapse;
+.side .metric.wide.home-literacy-quiz::before {
+  background: linear-gradient(90deg, rgba(11, 92, 168, .42), rgba(11, 92, 168, .04));
 }
 
-.fraud-education-body td,
-.fraud-education-body th {
-  padding: 8px;
-  border: 1px solid #ddd;
+.home-quiz-copy {
+  min-width: 0;
+}
+
+.home-quiz-copy > strong {
+  margin: 7px 0 4px !important;
+  color: #0b5ca8 !important;
+  font-size: 26px !important;
+}
+
+.home-quiz-copy p {
+  margin: 0;
+  color: #52676d;
+  font-size: 13px;
+}
+
+.home-quiz-button {
+  flex: 0 0 auto;
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 999px;
+  background: #0b5ca8;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.home-quiz-button:hover {
+  background: #073f7b;
+  transform: translateY(-1px);
+}
+
+.home-quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.home-quiz-options button {
+  padding: 7px 10px;
+  border: 1px solid rgba(11, 92, 168, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .86);
+  color: #294852;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.home-quiz-options button:hover {
+  border-color: #0b5ca8;
+  background: #edf7ff;
+  color: #0b5ca8;
 }
 
 @media (max-width: 620px) {
-  .fraud-education-row {
-    grid-template-columns: 1fr;
+  .side .panel.metric.home-calendar,
+  .side .panel.metric.home-campus-news {
+    min-height: 0;
   }
 
-  .fraud-education-row time {
-    place-items: start;
-    padding: 14px 18px 0;
-  }
-
-  .fraud-education-row button {
+  .side .metric.wide.home-literacy-quiz {
     align-items: flex-start;
     flex-direction: column;
-    gap: 6px;
-    padding: 8px 18px 16px;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .home-quiz-copy > strong {
+    font-size: 22px !important;
   }
 }
 
@@ -705,5 +668,375 @@
     flex-direction: column;
     gap: 6px;
     padding: 8px 16px 15px;
+  }
+}
+
+/* Security, cases, and downloads directories. */
+#security .security-format,
+.case-directory,
+.download-directory {
+  padding-top: 42px;
+  padding-bottom: 30px;
+}
+
+.safety-slogan {
+  margin-bottom: 24px;
+  padding: 25px clamp(22px, 4vw, 54px);
+  border-left: 5px solid #75b9ea;
+  background: linear-gradient(105deg, #0b5ca8, #17606a);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(11, 92, 168, .18);
+}
+
+.safety-slogan p {
+  max-width: 820px;
+  margin: 0;
+  font: 600 clamp(18px, 2.2vw, 25px)/1.65 "Songti SC", "STSong", serif;
+}
+
+.safety-directory,
+.case-directory {
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(10, 61, 66, .10);
+}
+
+.safety-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.safety-category-grid button,
+.case-selector button {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  min-height: 172px;
+  padding: 27px 30px;
+  border: 0;
+  border-right: 1px solid #e2ebee;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background .22s ease, color .22s ease;
+}
+
+.safety-category-grid button:last-child,
+.case-selector button:last-child {
+  border-right: 0;
+}
+
+.safety-category-grid button::after,
+.case-selector button::after {
+  position: absolute;
+  right: 28px;
+  bottom: 22px;
+  width: 34px;
+  height: 3px;
+  border-radius: 99px;
+  background: #75b9ea;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .22s ease;
+}
+
+.safety-category-grid button:hover,
+.safety-category-grid button.active,
+.case-selector button:hover,
+.case-selector button.active {
+  background: linear-gradient(145deg, #f0f8ff, #f8fcfb);
+  color: #0b5ca8;
+}
+
+.safety-category-grid button.active::after,
+.case-selector button.active::after {
+  transform: scaleX(1);
+}
+
+.safety-category-grid span {
+  color: #8ba5af;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.safety-category-grid strong {
+  font: 700 25px/1.2 "Songti SC", "STSong", serif;
+}
+
+.safety-category-grid small,
+.case-selector small {
+  color: #6a7d84;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.safety-file-list,
+.case-file-list {
+  border-top: 1px solid #e4ecee;
+}
+
+.topic-file-row {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 20px;
+  min-height: 102px;
+  padding: 18px 32px;
+  border-bottom: 1px solid #e4ecee;
+}
+
+.topic-file-row:last-child {
+  border-bottom: 0;
+}
+
+.topic-file-row > span {
+  color: #0b5ca8;
+  font: 700 24px/1 "Songti SC", "STSong", serif;
+}
+
+.topic-file-row h4 {
+  margin: 0 0 5px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.topic-file-row p {
+  margin: 0;
+  color: #77888e;
+  font-size: 13px;
+}
+
+.topic-file-row em {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #eaf5ff;
+  color: #0b5ca8;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.security-quiz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 24px;
+  padding: 29px 34px;
+  background: linear-gradient(105deg, rgba(11, 92, 168, .12), rgba(255, 255, 255, .82));
+  box-shadow: 0 14px 30px rgba(10, 61, 66, .08);
+}
+
+.security-quiz small {
+  color: #0b5ca8;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .13em;
+}
+
+.security-quiz h3 {
+  margin: 6px 0 5px;
+  color: #0b5ca8;
+  font: 700 25px/1.25 "Songti SC", "STSong", serif;
+}
+
+.security-quiz p {
+  margin: 0;
+  color: #61747a;
+  font-size: 13px;
+}
+
+.security-quiz > button {
+  flex: 0 0 auto;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #0b5ca8;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.security-quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.security-quiz-options button {
+  padding: 7px 10px;
+  border: 1px solid rgba(11, 92, 168, .2);
+  border-radius: 999px;
+  background: #fff;
+  color: #2b474f;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+
+.security-quiz-options button:hover {
+  border-color: #0b5ca8;
+  color: #0b5ca8;
+}
+
+#fraud > .page-hero {
+  background-color: #0b5ca8 !important;
+  background-image: linear-gradient(90deg, rgba(7, 63, 123, .68), rgba(11, 92, 168, .26)), url('../assets/home-campus.jpg') !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+.case-selector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-selector button {
+  min-height: 148px;
+}
+
+.case-selector span {
+  font: 700 28px/1.2 "Songti SC", "STSong", serif;
+}
+
+.download-hero {
+  background-color: #0b5ca8 !important;
+  background-image: linear-gradient(90deg, rgba(7, 63, 123, .84), rgba(11, 92, 168, .38)), url('../assets/campus-hero.jpg') !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+.download-directory {
+  max-width: 1040px;
+}
+
+.download-search {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 20px;
+  padding: 0 18px;
+  border: 1px solid #cfe0e5;
+  background: #fff;
+  color: #0b5ca8;
+  box-shadow: 0 10px 24px rgba(10, 61, 66, .06);
+}
+
+.download-search span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.download-search input {
+  width: 100%;
+  height: 58px;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  font: inherit;
+}
+
+.download-file-list {
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(10, 61, 66, .09);
+}
+
+.download-file-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 19px;
+  min-height: 96px;
+  padding: 17px 24px;
+  border-bottom: 1px solid #e1e9eb;
+  transition: background .2s ease;
+}
+
+.download-file-row:last-child {
+  border-bottom: 0;
+}
+
+.download-file-row:hover {
+  background: #f5fbff;
+}
+
+.download-file-row > span {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  background: #e6f3ff;
+  color: #0b5ca8;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.download-file-row h3 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.download-file-row p {
+  margin: 0;
+  color: #7c8c91;
+  font-size: 12px;
+}
+
+.download-file-row b {
+  color: #0b5ca8;
+  font-size: 13px;
+}
+
+.download-empty {
+  margin: 0;
+  padding: 34px;
+  color: #718188;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  #security .security-format,
+  .case-directory,
+  .download-directory {
+    padding-top: 28px;
+  }
+
+  .safety-category-grid,
+  .case-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .safety-category-grid button,
+  .case-selector button {
+    min-height: 124px;
+    border-right: 0;
+    border-bottom: 1px solid #e2ebee;
+  }
+
+  .safety-category-grid button:last-child,
+  .case-selector button:last-child {
+    border-bottom: 0;
+  }
+
+  .security-quiz {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topic-file-row,
+  .download-file-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+    padding: 17px 18px;
+  }
+
+  .topic-file-row em,
+  .download-file-row b {
+    grid-column: 2;
   }
 }
