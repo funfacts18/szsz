@@ -1251,3 +1251,494 @@
     font-size: 38px;
   }
 }
+
+/* Data elements: a self-contained literacy page with two full-width learning rows. */
+.data-elements-hero {
+  background: #0b5ca8 !important;
+}
+
+.data-elements-directory {
+  display: grid;
+  gap: 26px;
+  padding-top: 38px;
+  padding-bottom: 42px;
+}
+
+.data-element-quiz,
+.data-element-concepts,
+.data-element-flow {
+  border: 1px solid #d5e5ee;
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(10, 61, 66, .07);
+}
+
+.data-element-quiz {
+  display: grid;
+  grid-template-columns: minmax(220px, .72fr) minmax(0, 2.45fr) minmax(190px, .72fr);
+  gap: 20px;
+  align-items: stretch;
+  padding: 28px;
+}
+
+.data-element-quiz-heading {
+  align-self: center;
+}
+
+.data-element-quiz-heading small,
+.data-element-section-title small,
+.data-element-actions > div > small {
+  color: #0b5ca8;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .13em;
+}
+
+.data-element-quiz-heading h3,
+.data-element-section-title h3,
+.data-element-actions h3 {
+  margin: 7px 0 8px;
+  color: #263d48;
+  font: 700 clamp(23px, 2.3vw, 31px)/1.28 "Songti SC", "STSong", serif;
+}
+
+.data-element-quiz-heading p,
+.data-element-definition,
+.data-element-actions p {
+  margin: 0;
+  color: #677b83;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.data-element-quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.data-element-question {
+  min-width: 0;
+  padding: 17px 16px;
+  border: 1px solid #d8e5eb;
+  background: #fbfdff;
+}
+
+.data-element-question > span {
+  color: #5b20c9;
+  font: 700 18px/1 "Songti SC", "STSong", serif;
+}
+
+.data-element-question h4 {
+  min-height: 48px;
+  margin: 8px 0 11px;
+  color: #2a3f48;
+  font-size: 14px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.data-element-question > div {
+  display: grid;
+  gap: 7px;
+}
+
+.data-element-question button {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid #cfdee6;
+  background: #fff;
+  color: #49606a;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
+}
+
+.data-element-question button:hover:not(:disabled) {
+  border-color: #0b5ca8;
+  background: #f1f9ff;
+  color: #0b5ca8;
+}
+
+.data-element-question button:disabled {
+  cursor: default;
+}
+
+.data-element-question button.correct {
+  border-color: #18985a;
+  background: #eaf8f0;
+  color: #0c7741;
+  font-weight: 800;
+}
+
+.data-element-question button.incorrect {
+  border-color: #dc5b57;
+  background: #fff0f0;
+  color: #b63a37;
+}
+
+.data-element-explanation {
+  min-height: 54px;
+  margin: 11px 0 0;
+  color: #6d7d84;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.data-element-result {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 22px 16px;
+  border: 1px solid #75b9ea;
+  background: #f8fcff;
+  text-align: center;
+}
+
+.data-element-result small {
+  color: #5b20c9;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.data-element-result strong {
+  margin-top: 7px;
+  color: #0b5ca8;
+  font: 700 23px/1.2 "Songti SC", "STSong", serif;
+}
+
+.data-element-result b {
+  margin: 8px 0 5px;
+  color: #0b5ca8;
+  font: 700 56px/.92 "Times New Roman", "Songti SC", serif;
+}
+
+.data-element-result b em {
+  font-size: 20px;
+  font-style: normal;
+}
+
+.data-element-result p {
+  margin: 0;
+  color: #657880;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.data-element-result button {
+  margin-top: 13px;
+  padding: 7px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: #0b5ca8;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.data-element-concepts,
+.data-element-flow {
+  padding: 29px 32px 32px;
+}
+
+.data-element-section-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.data-element-section-title > span {
+  color: #5b20c9;
+  font: 700 38px/1 "Songti SC", "STSong", serif;
+}
+
+.data-element-section-title h3 {
+  margin: 3px 0 0;
+}
+
+.data-element-definition {
+  max-width: 780px;
+  margin: 19px 0 22px;
+  font-size: 15px;
+}
+
+.data-element-concept-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.data-element-concept-cards article {
+  position: relative;
+  min-height: 138px;
+  padding: 22px 21px;
+  border: 1px solid #dce7ed;
+  background: #fafdff;
+}
+
+.data-element-concept-cards article::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 3px;
+  background: #75b9ea;
+  content: "";
+}
+
+.data-element-concept-cards article.featured {
+  border-color: #75b9ea;
+  background: #eef8ff;
+}
+
+.data-element-concept-cards article.featured::before {
+  width: 68px;
+  background: #0b5ca8;
+}
+
+.data-element-concept-cards strong {
+  color: #263d48;
+  font: 700 23px/1.2 "Songti SC", "STSong", serif;
+}
+
+.data-element-concept-cards p {
+  margin: 13px 0 5px;
+  color: #536871;
+  font-size: 14px;
+}
+
+.data-element-concept-cards small {
+  color: #7c8e95;
+  font-size: 12px;
+}
+
+.data-element-flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 25px;
+}
+
+.data-element-flow-steps article {
+  position: relative;
+  min-height: 164px;
+  padding: 21px 19px;
+  border: 1px solid #dce7ed;
+  background: #fff;
+}
+
+.data-element-flow-steps article b {
+  display: block;
+  margin-bottom: 18px;
+  color: #5b20c9;
+  font: 700 26px/1 "Times New Roman", "Songti SC", serif;
+}
+
+.data-element-flow-steps article strong {
+  color: #29414d;
+  font: 700 20px/1.25 "Songti SC", "STSong", serif;
+}
+
+.data-element-flow-steps article p {
+  margin: 10px 0 0;
+  color: #71828a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.data-element-flow-steps article:not(:last-of-type)::after {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: -23px;
+  color: #75b9ea;
+  content: "→";
+  font-size: 26px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.data-element-flow-steps > i {
+  display: none;
+}
+
+.data-element-actions {
+  display: grid;
+  grid-template-columns: minmax(230px, .75fr) minmax(0, 2.25fr);
+  gap: 36px;
+  align-items: center;
+  padding: 36px;
+  background: #073f7b;
+  box-shadow: 0 18px 38px rgba(7, 63, 123, .20);
+}
+
+.data-element-actions > div > small,
+.data-element-actions h3,
+.data-element-actions p {
+  color: #fff;
+}
+
+.data-element-actions > div > small {
+  color: #8ed0ff;
+}
+
+.data-element-actions h3 {
+  margin-top: 9px;
+  font-size: clamp(26px, 2.6vw, 36px);
+}
+
+.data-element-actions p {
+  max-width: 300px;
+  color: #d3e8fa;
+}
+
+.data-element-actions nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.data-element-actions a {
+  position: relative;
+  display: grid;
+  min-height: 183px;
+  padding: 22px;
+  border: 1px solid rgba(186, 225, 255, .32);
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  text-decoration: none;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.data-element-actions a:hover {
+  background: rgba(255, 255, 255, .14);
+  transform: translateY(-3px);
+}
+
+.data-element-actions a span {
+  color: #91d3ff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .11em;
+}
+
+.data-element-actions a strong {
+  align-self: end;
+  margin-top: 17px;
+  font: 700 23px/1.2 "Songti SC", "STSong", serif;
+}
+
+.data-element-actions a small {
+  margin-top: 9px;
+  color: #d3e8fa;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.data-element-actions a b {
+  position: absolute;
+  right: 20px;
+  bottom: 17px;
+  color: #91d3ff;
+  font-size: 22px;
+}
+
+@media (max-width: 1040px) {
+  .data-element-quiz {
+    grid-template-columns: 1fr;
+  }
+
+  .data-element-quiz-heading {
+    max-width: 620px;
+  }
+
+  .data-element-result {
+    grid-template-columns: max-content max-content max-content 1fr;
+    column-gap: 13px;
+    justify-content: start;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .data-element-result strong,
+  .data-element-result b,
+  .data-element-result p,
+  .data-element-result button {
+    margin: 0;
+  }
+
+  .data-element-result p { align-self: center; }
+  .data-element-result button { justify-self: end; }
+
+  .data-element-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .data-elements-directory {
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .data-element-quiz,
+  .data-element-concepts,
+  .data-element-flow,
+  .data-element-actions {
+    padding: 23px 20px;
+  }
+
+  .data-element-quiz-grid,
+  .data-element-concept-cards,
+  .data-element-actions nav {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .data-element-question h4 {
+    min-height: 0;
+  }
+
+  .data-element-result {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .data-element-result strong,
+  .data-element-result b,
+  .data-element-result p,
+  .data-element-result button {
+    margin-top: 7px;
+  }
+
+  .data-element-flow-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .data-element-flow-steps > i {
+    display: none;
+  }
+
+  .data-element-flow-steps article {
+    min-height: 0;
+  }
+
+  .data-element-flow-steps article:not(:last-of-type)::after {
+    top: auto;
+    right: 50%;
+    bottom: -22px;
+    transform: translateX(50%) rotate(90deg);
+  }
+
+  .data-element-actions a {
+    min-height: 132px;
+  }
+}

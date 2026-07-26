@@ -22,6 +22,12 @@ createApp({
     let securityQuizScore = 0
     let activeSafetyType = 'network'
     let activeCaseType = 'student'
+    const dataElementQuizQuestions = [
+      { question: '你在某 APP 注册时勾选的“用户协议”，你的个人数据归谁所有？', answers: ['归平台所有', '归我个人所有', '说不清，平台和我都有份'], correct: 2, note: '个人对其数据享有权益，平台需在合法、正当、必要的范围内处理数据。' },
+      { question: '以下哪个属于“数据要素”的应用场景？', answers: ['把公司报表存进硬盘', '用交通流量数据优化城市红绿灯配时', '用 Excel 制作个人记账本'], correct: 1, note: '数据参与城市运行决策并创造效率价值，才体现了数据要素的作用。' },
+      { question: '手机号被一家营销公司合法购买并用于推送广告，这属于数据的？', answers: ['采集环节', '流通交易环节', '销毁环节'], correct: 1, note: '数据经合规授权后在不同主体之间使用，属于数据流通交易环节。' }
+    ]
+    const dataElementSelections = Array(dataElementQuizQuestions.length).fill(null)
     const aiLessons = {
       prompt: ['提示词与任务设计', '目标对象与背景语境', '具体任务与可用材料', '输出格式和限制条件', '来源、核验与不确定性要求'],
       verify: ['生成内容核验', '找到可追溯的原始来源', '检查作者、日期与适用范围', '交叉验证关键数字', '标记无法确认的内容'],
@@ -133,6 +139,20 @@ createApp({
       }
       const item = quizQuestions[quizStep]
       quiz.innerHTML = `<div class="home-quiz-copy"><small>数字素养微自测 · ${quizStep + 1} / ${quizQuestions.length}</small><strong>${item.question}</strong><div class="home-quiz-options">${item.answers.map((answer, index) => `<button type="button" data-home-quiz-answer="${index}">${String.fromCharCode(65 + index)}. ${answer}</button>`).join('')}</div></div>`
+    }
+    const renderDataElementQuiz = () => {
+      const quiz = document.querySelector('.data-element-quiz')
+      if (!quiz) return
+      const answeredCount = dataElementSelections.filter((answer) => answer !== null).length
+      const score = dataElementSelections.reduce((total, answer, index) => total + (answer === dataElementQuizQuestions[index].correct ? 1 : 0), 0)
+      const result = score <= 1 ? ['数据小白', '建议从概念入门学起'] : score === 2 ? ['数据达人', '已有不错的基础认知'] : ['数据高手', '具备要素思维，可以深入参与实践了！']
+      quiz.innerHTML = `<div class="data-element-quiz-heading"><small>DATA LITERACY CHECK</small><h3>你的“数据要素”认知在哪个段位？</h3><p>3 道小题，点选后即时查看解释。</p></div><div class="data-element-quiz-grid">${dataElementQuizQuestions.map((item, questionIndex) => {
+        const selected = dataElementSelections[questionIndex]
+        return `<article class="data-element-question"><span>${String(questionIndex + 1).padStart(2, '0')}</span><h4>${item.question}</h4><div>${item.answers.map((answer, answerIndex) => {
+          const state = selected === null ? '' : answerIndex === item.correct ? 'correct' : answerIndex === selected ? 'incorrect' : ''
+          return `<button type="button" class="${state}" data-element-answer="${questionIndex}" data-element-option="${answerIndex}" ${selected !== null ? 'disabled' : ''}>${String.fromCharCode(65 + answerIndex)}. ${answer}</button>`
+        }).join('')}</div>${selected !== null ? `<p class="data-element-explanation">${item.note}</p>` : ''}</article>`
+      }).join('')}</div><aside class="data-element-result ${answeredCount === dataElementQuizQuestions.length ? 'complete' : ''}"><small>${answeredCount === dataElementQuizQuestions.length ? '测验完成' : `已完成 ${answeredCount} / ${dataElementQuizQuestions.length}`}</small><strong>${result[0]}</strong><b>${score}<em>/ ${dataElementQuizQuestions.length}</em></b><p>${result[1]}</p>${answeredCount === dataElementQuizQuestions.length ? '<button type="button" data-element-quiz-reset>再测一次</button>' : ''}</aside>`
     }
     const startHomeQuiz = () => {
       quizStep = 0
@@ -297,6 +317,8 @@ createApp({
       const securityQuizStart = event.target.closest('[data-security-quiz-start]')
       const securityQuizAnswer = event.target.closest('[data-security-quiz-answer]')
       const securityQuizReset = event.target.closest('[data-security-quiz-reset]')
+      const dataElementAnswer = event.target.closest('[data-element-answer]')
+      const dataElementQuizReset = event.target.closest('[data-element-quiz-reset]')
 
       if (menu) {
         event.preventDefault()
@@ -344,6 +366,19 @@ createApp({
         securityQuizStep = 0
         securityQuizScore = 0
         renderSecurityQuiz()
+      } else if (dataElementAnswer) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        const questionIndex = Number(dataElementAnswer.dataset.elementAnswer)
+        if (dataElementSelections[questionIndex] === null) {
+          dataElementSelections[questionIndex] = Number(dataElementAnswer.dataset.elementOption)
+          renderDataElementQuiz()
+        }
+      } else if (dataElementQuizReset) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        dataElementSelections.fill(null)
+        renderDataElementQuiz()
       } else if (homeNews) {
         event.preventDefault()
         event.stopImmediatePropagation()
@@ -406,7 +441,7 @@ createApp({
       }
     }
 
-    return { interceptInteractions, renderCaseFiles, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
+    return { interceptInteractions, renderCaseFiles, renderDataElementQuiz, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
   },
   mounted() {
     const fromHash = window.location.hash.slice(1)
@@ -507,6 +542,12 @@ createApp({
       newsDirectoryLayout.className = 'shell data-news-directory'
       newsDirectoryLayout.innerHTML = `<div class="data-news-switch" role="tablist" aria-label="数据新闻分类"><button class="active" type="button" data-news-directory="policy"><span>01</span><strong>国家动态</strong><small>政策、行业与教育数字化资讯</small></button><button type="button" data-news-directory="campus"><span>02</span><strong>校内动态</strong><small>校园数字化建设与实践新闻</small></button></div><div class="data-news-content"><article class="data-news-featured"></article><div class="data-news-list" aria-live="polite"></div></div>`
       this.selectNewsDirectory('policy')
+    }
+
+    const dataElementsSection = document.querySelector('#contact')
+    if (dataElementsSection) {
+      dataElementsSection.innerHTML = `<div class="page-hero data-elements-hero"><div class="shell"><span class="micro">07 / DATA ELEMENTS</span><h2 class="page-title">数据要素</h2></div></div><div class="shell data-elements-directory"><section class="data-element-quiz" aria-live="polite"></section><section class="data-element-concepts"><div class="data-element-section-title"><span>01</span><div><small>CORE CONCEPTS</small><h3>数据要素，到底是什么？</h3></div></div><p class="data-element-definition">数据要素，是指能够直接投入生产、创造新价值的数据资源；它是继土地、劳动力、资本、技术之后的第五大生产要素。</p><div class="data-element-concept-cards"><article><strong>数据</strong><p>原始的信息记录</p><small>未开采的原油</small></article><article><strong>数据资源</strong><p>初步整理，有一定价值</p><small>已开采的原油</small></article><article class="featured"><strong>数据要素</strong><p>直接参与生产、创造新价值</p><small>精炼后的汽油，驱动引擎</small></article></div></section><section class="data-element-flow"><div class="data-element-section-title"><span>02</span><div><small>DATA FLOW</small><h3>一条数据从产生到赚钱，走了几步？</h3></div></div><div class="data-element-flow-steps"><article><b>01</b><strong>产生数据</strong><p>你在数字场景中的点击、支付与选择。</p></article><i aria-hidden="true">→</i><article><b>02</b><strong>采集加工</strong><p>企业采集、清洗、脱敏并整合数据。</p></article><i aria-hidden="true">→</i><article><b>03</b><strong>合规交易</strong><p>在合规、可信环境下进行数据流通。</p></article><i aria-hidden="true">→</i><article><b>04</b><strong>应用增值</strong><p>用数据改善服务、效率与决策。</p></article></div></section><section class="data-element-actions"><div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、课程学习与个人权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><a href="#downloads"><span>02</span><strong>相关课程</strong><small>系统学习数据要素与数字经济知识。</small><b>→</b></a><a href="#security"><span>03</span><strong>个人数据权益</strong><small>了解数据权益与个人信息保护方式。</small><b>→</b></a></nav></section></div>`
+      this.renderDataElementQuiz()
     }
 
     const firstAiTab = document.querySelector('[data-ai="prompt"]')
