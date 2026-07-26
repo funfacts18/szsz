@@ -120,6 +120,10 @@ createApp({
       const visibleFiles = downloadFiles.filter((file) => file.name.toLowerCase().includes(keyword))
       list.innerHTML = visibleFiles.length ? visibleFiles.map((file) => `<a class="download-file-row" href="${file.href}" download><span>${file.type}</span><div><h3>${file.name}</h3><p>资料下载 · ${file.size}</p></div><b>下载 ↓</b></a>`).join('') : '<p class="download-empty">没有找到匹配的文件。</p>'
     }
+    const renderNewsRows = (items) => items.slice(1, 5).map((item) => {
+      const [year, month, day] = String(item.date).split('-')
+      return `<article class="data-news-row"><time><b>${day || '01'}</b><span>${year || ''}.${month || ''}</span></time><div><h3>${escapeHtml(item.title)}</h3><p>${item.source ? `来源：${escapeHtml(item.source)}` : '数据新闻动态'}</p></div></article>`
+    }).join('')
     const renderHomeQuiz = () => {
       const quiz = document.querySelector('.home-literacy-quiz')
       if (!quiz) return
@@ -184,13 +188,16 @@ createApp({
       document.querySelectorAll('[data-news-directory]').forEach((button) => {
         button.classList.toggle('active', button.dataset.newsDirectory === type)
       })
-      const newsList = document.querySelector('#news .news-list')
-      if (!newsList) return
-      if (type === 'campus') {
-        newsList.innerHTML = campusNews.map((item) => `<article class="news-list-row campus-news-row"><time>${item.date}</time><a href="${item.source}" target="_blank" rel="noopener">${item.title}<span class="campus-news-source">官网原文 ↗</span></a></article>`).join('')
-      } else {
-        newsList.innerHTML = nationalPolicies.map((item) => `<article class="news-list-row national-policy-row"><time>${escapeHtml(item.date)}</time><button type="button" data-policy-article="${escapeHtml(item.id)}">${escapeHtml(item.title)}<span class="national-policy-open">阅读详情 →</span></button></article>`).join('')
-      }
+      const items = type === 'campus' ? campusNews : nationalPolicies
+      const featured = document.querySelector('.data-news-featured')
+      const list = document.querySelector('.data-news-list')
+      if (!featured || !list || !items.length) return
+      const first = items[0]
+      const summary = type === 'campus'
+        ? '聚焦校园数字化建设、教学科研服务和师生身边的最新动态。'
+        : '聚焦教育数字化、数据治理与行业发展的重要政策和资讯。'
+      featured.innerHTML = `<img src="assets/news-featured-conference.png" alt="${type === 'campus' ? '校园数字化交流会议现场' : '数字化发展专题交流现场'}"><div class="data-news-featured-copy"><span>置顶新闻</span><h3>${escapeHtml(first.title)}</h3><p>${summary}</p></div>`
+      list.innerHTML = renderNewsRows(items)
     }
 
     const showPolicyArticle = (id) => {
@@ -492,20 +499,15 @@ createApp({
       this.renderCaseFiles()
     }
 
-    const directoryButtons = [...document.querySelectorAll('#news [data-news-directory]')]
-    const categorySetup = [
-      { type: 'policy', label: '国家政策' },
-      { type: 'campus', label: '校内新闻' }
-    ]
-    directoryButtons.slice(0, 2).forEach((button, index) => {
-      button.dataset.newsDirectory = categorySetup[index].type
-      button.textContent = categorySetup[index].label
-    })
-    directoryButtons.slice(2).forEach((button) => button.remove())
-    document.querySelectorAll('#news .news-list-row').forEach((row, index) => {
-      row.dataset.newsList = index < 3 ? 'campus' : 'policy'
-    })
-    this.selectNewsDirectory('campus')
+    const newsSection = document.querySelector('#news')
+    const newsDirectoryLayout = newsSection?.querySelector('.news-directory')
+    if (newsSection && newsDirectoryLayout) {
+      newsSection.querySelector('.page-hero .micro').textContent = '01 / DATA NEWS'
+      newsSection.querySelector('.page-hero .page-title').textContent = '数据新闻'
+      newsDirectoryLayout.className = 'shell data-news-directory'
+      newsDirectoryLayout.innerHTML = `<div class="data-news-switch" role="tablist" aria-label="数据新闻分类"><button class="active" type="button" data-news-directory="policy"><span>01</span><strong>国家动态</strong><small>政策、行业与教育数字化资讯</small></button><button type="button" data-news-directory="campus"><span>02</span><strong>校内动态</strong><small>校园数字化建设与实践新闻</small></button></div><div class="data-news-content"><article class="data-news-featured"></article><div class="data-news-list" aria-live="polite"></div></div>`
+      this.selectNewsDirectory('policy')
+    }
 
     const firstAiTab = document.querySelector('[data-ai="prompt"]')
     if (firstAiTab) firstAiTab.textContent = '软件预警'

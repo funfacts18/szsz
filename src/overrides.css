@@ -1040,3 +1040,214 @@
     grid-column: 2;
   }
 }
+
+/* Data news: two editorial entrances leading to a featured story and date-led news stream. */
+.data-news-directory {
+  padding-top: 38px;
+  padding-bottom: 36px;
+}
+
+.data-news-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 30px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(10, 61, 66, .08);
+}
+
+.data-news-switch button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 12px;
+  padding: 23px 30px;
+  border: 0;
+  border-right: 1px solid #dde8eb;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background .2s ease, color .2s ease;
+}
+
+.data-news-switch button:last-child {
+  border-right: 0;
+}
+
+.data-news-switch button::after {
+  position: absolute;
+  right: 30px;
+  bottom: 0;
+  left: 30px;
+  height: 3px;
+  background: #5b20c9;
+  content: "";
+  transform: scaleX(0);
+  transition: transform .2s ease;
+}
+
+.data-news-switch button:hover,
+.data-news-switch button.active {
+  background: #f7fbff;
+  color: #0b5ca8;
+}
+
+.data-news-switch button.active::after {
+  transform: scaleX(1);
+}
+
+.data-news-switch span {
+  grid-row: span 2;
+  align-self: center;
+  color: #5b20c9;
+  font: 700 30px/1 "Songti SC", "STSong", serif;
+}
+
+.data-news-switch strong {
+  font: 700 24px/1.2 "Songti SC", "STSong", serif;
+}
+
+.data-news-switch small {
+  margin-top: 4px;
+  color: #72828a;
+  font-size: 13px;
+}
+
+.data-news-content {
+  display: grid;
+  grid-template-columns: minmax(340px, .74fr) minmax(0, 1.06fr);
+  gap: clamp(38px, 5vw, 76px);
+  align-items: start;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 16px 34px rgba(10, 61, 66, .08);
+}
+
+.data-news-featured {
+  min-width: 0;
+}
+
+.data-news-featured img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.data-news-featured-copy {
+  padding: 18px 2px 8px;
+}
+
+.data-news-featured-copy > span {
+  color: #5b20c9;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.data-news-featured h3 {
+  margin: 7px 0 6px;
+  color: var(--ink);
+  font: 700 21px/1.42 "Songti SC", "STSong", serif;
+}
+
+.data-news-featured p {
+  margin: 0;
+  color: #72828a;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.data-news-list {
+  min-width: 0;
+}
+
+.data-news-row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 112px;
+  padding: 16px 0;
+  border-bottom: 1px dashed #cfbca8;
+}
+
+.data-news-row:first-child {
+  padding-top: 0;
+}
+
+.data-news-row:last-child {
+  border-bottom: 0;
+}
+
+.data-news-row time {
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  color: #5b20c9;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-news-row time b {
+  font: 400 46px/.88 "Times New Roman", "Songti SC", serif;
+}
+
+.data-news-row time span {
+  font-size: 13px;
+}
+
+.data-news-row h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 2px 0 7px;
+  color: #273b42;
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.data-news-row p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #869399;
+  font-size: 12px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+@media (max-width: 760px) {
+  .data-news-directory {
+    padding-top: 26px;
+  }
+
+  .data-news-switch,
+  .data-news-content {
+    grid-template-columns: 1fr;
+  }
+
+  .data-news-switch button {
+    border-right: 0;
+    border-bottom: 1px solid #dde8eb;
+  }
+
+  .data-news-switch button:last-child {
+    border-bottom: 0;
+  }
+
+  .data-news-content {
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .data-news-row {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 13px;
+    min-height: 90px;
+  }
+
+  .data-news-row time b {
+    font-size: 38px;
+  }
+}
