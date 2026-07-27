@@ -2315,42 +2315,6 @@
   font-style: normal;
 }
 
-.ecosystem-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 31px clamp(24px, 5vw, 60px);
-  background: linear-gradient(115deg, #062f67, #0b5ca8);
-  color: #fff;
-  box-shadow: 0 16px 34px rgba(11, 92, 168, .18);
-}
-
-.ecosystem-cta small {
-  color: #9bd5ff;
-}
-
-.ecosystem-cta h3 {
-  margin: 9px 0 6px;
-  font: 700 clamp(21px, 2.5vw, 30px)/1.3 "Songti SC", "STSong", serif;
-}
-
-.ecosystem-cta p {
-  margin: 0;
-  color: #c3e5fc;
-  font-size: 13px;
-}
-
-.ecosystem-cta > span {
-  flex: 0 0 auto;
-  padding: 13px 21px;
-  border: 1px solid rgba(186, 225, 255, .45);
-  color: #d9f0ff;
-  font-size: 13px;
-  line-height: 1.55;
-  text-align: center;
-}
-
 @media (max-width: 900px) {
   .ecosystem-intro {
     grid-template-columns: 1fr;
@@ -2404,10 +2368,6 @@
     min-height: 240px;
   }
 
-  .ecosystem-cta {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 
 /* The three ecosystem scenes are now the primary content row. */
