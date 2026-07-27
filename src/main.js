@@ -195,7 +195,16 @@ createApp({
       const directory = dataElementDirectories[key]
       if (!actions || !directory) return
       actions.classList.add('resource-mode')
-      actions.innerHTML = `<div class="data-element-resource-heading"><small>DATA ELEMENTS / RESOURCE DIRECTORY</small><h3>${directory.label}</h3><p>${directory.intro}</p></div><div class="data-element-resource-list">${directory.items.map((item, index) => `<a href="${item.url}" target="_blank" rel="noopener"><span>${String(index + 1).padStart(2, '0')}</span><div><strong>${item.title}</strong><small>${item.source}</small></div><b>查看原文 ↗</b></a>`).join('')}</div><button type="button" class="data-element-directory-back" data-element-directory-back>← 返回学习入口</button>`
+      actions.innerHTML = `<div class="data-element-resource-heading"><small>DATA ELEMENTS / RESOURCE DIRECTORY</small><h3>${directory.label}</h3><p>${directory.intro}</p></div><div class="data-element-resource-list">${directory.items.map((item, index) => `<button type="button" data-element-resource-article="${key}-${index}"><span>${String(index + 1).padStart(2, '0')}</span><div><strong>${item.title}</strong><small>${item.source}</small></div><b>打开原文 ↗</b></button>`).join('')}</div><div class="data-element-resource-source">参考来源：${directory.items.map((item) => `<a href="${item.url}" target="_blank" rel="noopener">${item.source}原文 ↗</a>`).join('　')}</div><button type="button" class="data-element-directory-back" data-element-directory-back>← 返回学习入口</button>`
+    }
+    const renderDataElementResourceArticle = (key, index) => {
+      const actions = document.querySelector('.data-element-actions')
+      const directory = dataElementDirectories[key]
+      const item = directory?.items[Number(index)]
+      if (!actions || !item) return
+      const frameUrl = item.url.replace(/^http:/, 'https:')
+      actions.classList.add('resource-mode', 'article-mode')
+      actions.innerHTML = `<article class="data-element-resource-article"><button type="button" class="data-element-article-back" data-element-directory-back>← 返回学习入口</button><small>RESOURCE READING / OFFICIAL TEXT</small><h3>${escapeHtml(item.title)}</h3><div class="data-element-article-meta">来源：${escapeHtml(item.source)}</div><div class="data-element-article-frame"><iframe title="${escapeHtml(item.title)}" src="${frameUrl}"></iframe></div><div class="data-element-resource-source">参考来源：<a href="${item.url}" target="_blank" rel="noopener">${escapeHtml(item.source)}官方原文 ↗</a></div></article>`
     }
     const startHomeQuiz = () => {
       quizStep = 0
@@ -364,6 +373,7 @@ createApp({
       const dataElementQuizReset = event.target.closest('[data-element-quiz-reset]')
       const dataElementDirectory = event.target.closest('[data-element-directory]')
       const dataElementDirectoryBack = event.target.closest('[data-element-directory-back]')
+      const dataElementResourceArticle = event.target.closest('[data-element-resource-article]')
 
       if (menu) {
         event.preventDefault()
@@ -428,6 +438,11 @@ createApp({
         event.preventDefault()
         event.stopImmediatePropagation()
         renderDataElementDirectory(dataElementDirectory.dataset.elementDirectory)
+      } else if (dataElementResourceArticle) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        const [directoryKey, itemIndex] = dataElementResourceArticle.dataset.elementResourceArticle.split('-')
+        renderDataElementResourceArticle(directoryKey, itemIndex)
       } else if (dataElementDirectoryBack) {
         event.preventDefault()
         event.stopImmediatePropagation()
@@ -494,7 +509,7 @@ createApp({
       }
     }
 
-    return { interceptInteractions, renderCaseFiles, renderDataElementActions, renderDataElementDirectory, renderDataElementFlowMore, renderDataElementQuiz, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
+    return { interceptInteractions, renderCaseFiles, renderDataElementActions, renderDataElementDirectory, renderDataElementFlowMore, renderDataElementQuiz, renderDataElementResourceArticle, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
   },
   mounted() {
     const fromHash = window.location.hash.slice(1)
