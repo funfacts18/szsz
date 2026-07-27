@@ -2461,22 +2461,25 @@
 
 .ecosystem-flow-steps article {
   position: relative;
-  min-height: 152px;
-  padding: 21px 19px;
+  display: flex;
+  min-height: 96px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 17px 19px;
   border: 1px solid #dce7ed;
   background: #f8fcff;
 }
 
 .ecosystem-flow-steps article b {
   display: block;
-  margin-bottom: 17px;
+  margin-bottom: 8px;
   color: #5b20c9;
-  font: 700 25px/1 "Times New Roman", "Songti SC", serif;
+  font: 700 21px/1 "Times New Roman", "Songti SC", serif;
 }
 
 .ecosystem-flow-steps article strong {
   color: #29414d;
-  font: 700 19px/1.25 "Songti SC", "STSong", serif;
+  font: 700 17px/1.25 "Songti SC", "STSong", serif;
 }
 
 .ecosystem-flow-steps article p {
@@ -2620,7 +2623,7 @@
   }
 
   .ecosystem-flow-steps article {
-    min-height: 125px;
+    min-height: 92px;
   }
 
   .ecosystem-support {
