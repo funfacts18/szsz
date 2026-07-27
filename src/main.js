@@ -178,7 +178,7 @@ createApp({
       const actions = document.querySelector('.data-element-actions')
       if (!actions) return
       actions.classList.remove('resource-mode')
-      actions.innerHTML = `<div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、权威文件与数据权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><button type="button" data-element-directory="files"><span>02</span><strong>相关文件</strong><small>查看数据要素建设的权威政策文件。</small><b>→</b></button><button type="button" data-element-directory="rights"><span>03</span><strong>数据权益</strong><small>查看数据权益相关法律目录。</small><b>→</b></button></nav>`
+      actions.innerHTML = `<div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、权威文件与数据权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="https://www.nda.gov.cn/sjj/zhuanti/ztsjysx/sjysal/list/index_pc_1.html" target="_blank" rel="noopener"><span>数据要素×</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><button type="button" data-element-directory="files"><span>02</span><strong>相关文件</strong><small>查看数据要素建设的权威政策文件。</small><b>→</b></button><button type="button" data-element-directory="rights"><span>03</span><strong>数据权益</strong><small>查看数据权益相关法律目录。</small><b>→</b></button></nav>`
     }
     const renderDataElementFlowMore = () => {
       const flow = document.querySelector('.data-element-flow')
