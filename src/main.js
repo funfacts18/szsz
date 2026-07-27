@@ -77,14 +77,14 @@ createApp({
     }
     const caseFiles = {
       student: [
-        ['学生科研数据整理案例', '从采集、命名到备份的完整流程'],
-        ['课程作业中的 AI 协作案例', '任务拆解、引用标注与结果核验'],
-        ['校园账号安全处置案例', '异常登录后的快速自查与申诉']
+        { title: '生态学视角下数智教育的本质解析与发展路径探究', description: '从生态学视角理解数智教育的本质与发展路径', date: '2025-06-18', href: 'https://mp.weixin.qq.com/s/wletPu97HajJ68gj8gSguQ' },
+        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20' },
+        { title: '课程作业中的 AI 协作案例', description: '任务拆解、引用标注与结果核验', date: '2025-04-12' }
       ],
       teacher: [
-        ['课程资源安全共享案例', '面向学生发布资料时的权限设计'],
-        ['教学数据合规使用案例', '课堂数据采集与告知的实践方式'],
-        ['AI 辅助教学设计案例', '可信使用、过程记录与教学反馈']
+        { title: '课程资源安全共享案例', description: '面向学生发布资料时的权限设计', date: '2025-06-10' },
+        { title: '教学数据合规使用案例', description: '课堂数据采集与告知的实践方式', date: '2025-05-16' },
+        { title: 'AI 辅助教学设计案例', description: '可信使用、过程记录与教学反馈', date: '2025-04-08' }
       ]
     }
     const downloadFiles = [
@@ -99,6 +99,10 @@ createApp({
       { question: '发现账号异常登录后，正确做法是？', answers: ['继续观察', '修改密码并联系学校服务人员', '把密码告诉同学检查'], correct: 1 }
     ]
     const fileListRows = (files) => files.map(([name, description], index) => `<article class="topic-file-row"><span>${String(index + 1).padStart(2, '0')}</span><div><h4>${name}</h4><p>${description}</p></div><em>文件</em></article>`).join('')
+    const caseFileRows = (files) => files.map((item) => {
+      const row = `<time>${item.date}</time><div><h4>${item.title}</h4><p>${item.description}</p></div><em>${item.href ? '阅读 ↗' : '文件'}</em>`
+      return item.href ? `<a class="case-file-row" href="${item.href}" target="_blank" rel="noopener">${row}</a>` : `<article class="case-file-row">${row}</article>`
+    }).join('')
     const renderSafetyFiles = () => {
       const list = document.querySelector('.safety-file-list')
       if (list) list.innerHTML = fileListRows(securityFiles[activeSafetyType])
@@ -106,7 +110,7 @@ createApp({
     }
     const renderCaseFiles = () => {
       const list = document.querySelector('.case-file-list')
-      if (list) list.innerHTML = fileListRows(caseFiles[activeCaseType])
+      if (list) list.innerHTML = caseFileRows(caseFiles[activeCaseType])
       document.querySelectorAll('[data-case-tab]').forEach((button) => button.classList.toggle('active', button.dataset.caseTab === activeCaseType))
     }
     const renderSecurityQuiz = () => {
