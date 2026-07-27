@@ -1454,9 +1454,34 @@
 }
 
 .data-element-section-title {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.data-element-section-title > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.data-element-more {
+  align-self: flex-start;
+  margin: 4px 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid #a7cfea;
+  border-radius: 999px;
+  color: #0b5ca8;
+  font-size: 12px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s ease, color .2s ease;
+}
+
+.data-element-more:hover {
+  background: #0b5ca8;
+  color: #fff;
 }
 
 .data-element-section-title > span {

@@ -165,8 +165,8 @@ createApp({
         }]
       },
       rights: {
-        label: '个人数据权益',
-        intro: '个人数据权益相关法律目录。',
+        label: '数据权益',
+        intro: '数据权益相关法律目录。',
         items: [
           { title: '中华人民共和国网络安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/zgrdw/npc/xinwen/2016-11/07/content_2001605.htm' },
           { title: '中华人民共和国数据安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/c2/c30834/202106/t20210610_311888.html' },
@@ -178,7 +178,17 @@ createApp({
       const actions = document.querySelector('.data-element-actions')
       if (!actions) return
       actions.classList.remove('resource-mode')
-      actions.innerHTML = `<div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、权威文件与个人权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><button type="button" data-element-directory="files"><span>02</span><strong>相关文件</strong><small>查看数据要素建设的权威政策文件。</small><b>→</b></button><button type="button" data-element-directory="rights"><span>03</span><strong>个人数据权益</strong><small>查看个人数据权益相关法律目录。</small><b>→</b></button></nav>`
+      actions.innerHTML = `<div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、权威文件与数据权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><button type="button" data-element-directory="files"><span>02</span><strong>相关文件</strong><small>查看数据要素建设的权威政策文件。</small><b>→</b></button><button type="button" data-element-directory="rights"><span>03</span><strong>数据权益</strong><small>查看数据权益相关法律目录。</small><b>→</b></button></nav>`
+    }
+    const renderDataElementFlowMore = () => {
+      const flow = document.querySelector('.data-element-flow')
+      const title = flow?.querySelector('.data-element-section-title')
+      if (!title) return
+      const heading = title.querySelector('h3')
+      if (heading) heading.textContent = '数据要素怎么“流动”'
+      if (!title.querySelector('[data-data-flow-more]')) {
+        title.insertAdjacentHTML('beforeend', '<a class="data-element-more" data-data-flow-more href="https://www.caict.ac.cn/kxyj/qwfb/ztbg/202511/P020251128616212191150.pdf" target="_blank" rel="noopener">更多 ↗</a>')
+      }
     }
     const renderDataElementDirectory = (key) => {
       const actions = document.querySelector('.data-element-actions')
@@ -484,7 +494,7 @@ createApp({
       }
     }
 
-    return { interceptInteractions, renderCaseFiles, renderDataElementActions, renderDataElementDirectory, renderDataElementQuiz, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
+    return { interceptInteractions, renderCaseFiles, renderDataElementActions, renderDataElementDirectory, renderDataElementFlowMore, renderDataElementQuiz, renderDownloads, renderSafetyFiles, selectAi, selectNewsDirectory, selectSection, syncSections }
   },
   mounted() {
     const fromHash = window.location.hash.slice(1)
@@ -592,6 +602,7 @@ createApp({
       dataElementsSection.innerHTML = `<div class="page-hero data-elements-hero"><div class="shell"><span class="micro">07 / DATA ELEMENTS</span><h2 class="page-title">数据要素</h2></div></div><div class="shell data-elements-directory"><section class="data-element-quiz" aria-live="polite"></section><section class="data-element-concepts"><div class="data-element-section-title"><span>01</span><div><small>CORE CONCEPTS</small><h3>数据要素，到底是什么？</h3></div></div><p class="data-element-definition">数据要素，是指能够直接投入生产、创造新价值的数据资源；它是继土地、劳动力、资本、技术之后的第五大生产要素。</p><div class="data-element-concept-cards"><article><strong>数据</strong><p>原始的信息记录</p><small>未开采的原油</small></article><article><strong>数据资源</strong><p>初步整理，有一定价值</p><small>已开采的原油</small></article><article class="featured"><strong>数据要素</strong><p>直接参与生产、创造新价值</p><small>精炼后的汽油，驱动引擎</small></article></div></section><section class="data-element-flow"><div class="data-element-section-title"><span>02</span><div><small>DATA FLOW</small><h3>一条数据从产生到赚钱，走了几步？</h3></div></div><div class="data-element-flow-steps"><article><b>01</b><strong>产生数据</strong><p>你在数字场景中的点击、支付与选择。</p></article><i aria-hidden="true">→</i><article><b>02</b><strong>采集加工</strong><p>企业采集、清洗、脱敏并整合数据。</p></article><i aria-hidden="true">→</i><article><b>03</b><strong>合规交易</strong><p>在合规、可信环境下进行数据流通。</p></article><i aria-hidden="true">→</i><article><b>04</b><strong>应用增值</strong><p>用数据改善服务、效率与决策。</p></article></div></section><section class="data-element-actions"><div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、课程学习与个人权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><a href="#downloads"><span>02</span><strong>相关课程</strong><small>系统学习数据要素与数字经济知识。</small><b>→</b></a><a href="#security"><span>03</span><strong>个人数据权益</strong><small>了解数据权益与个人信息保护方式。</small><b>→</b></a></nav></section></div>`
       this.renderDataElementQuiz()
       this.renderDataElementActions()
+      this.renderDataElementFlowMore()
     }
 
     const firstAiTab = document.querySelector('[data-ai="prompt"]')
