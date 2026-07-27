@@ -1861,6 +1861,19 @@
   font-size: 13px;
 }
 
+.data-element-local-article pre {
+  max-height: min(72vh, 700px);
+  margin: 20px 0 0;
+  padding: 28px;
+  overflow: auto;
+  border: 1px solid #d5e5ee;
+  background: #fff;
+  color: #263d48;
+  font: 14px/1.9 "Songti SC", "STSong", serif;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .data-element-article-frame {
   height: min(72vh, 700px);
   margin-top: 20px;

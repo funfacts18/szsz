@@ -168,9 +168,9 @@ createApp({
         label: '数据权益',
         intro: '数据权益相关法律目录。',
         items: [
-          { title: '中华人民共和国网络安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/zgrdw/npc/xinwen/2016-11/07/content_2001605.htm' },
-          { title: '中华人民共和国数据安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/c2/c30834/202106/t20210610_311888.html' },
-          { title: '中华人民共和国个人信息保护法', source: '全国人大网', url: 'http://www.npc.gov.cn/npc/c2/c30834/202108/t20210820_313088.html' }
+          { title: '中华人民共和国网络安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/zgrdw/npc/xinwen/2016-11/07/content_2001605.htm', local: 'resources/law-network-security.txt' },
+          { title: '中华人民共和国数据安全法', source: '全国人大网', url: 'http://www.npc.gov.cn/c2/c30834/202106/t20210610_311888.html', local: 'resources/law-data-security.txt' },
+          { title: '中华人民共和国个人信息保护法', source: '全国人大网', url: 'http://www.npc.gov.cn/npc/c2/c30834/202108/t20210820_313088.html', local: 'resources/law-personal-information-protection.txt' }
         ]
       }
     }
@@ -197,13 +197,20 @@ createApp({
       actions.classList.add('resource-mode')
       actions.innerHTML = `<div class="data-element-resource-heading"><small>DATA ELEMENTS / RESOURCE DIRECTORY</small><h3>${directory.label}</h3><p>${directory.intro}</p></div><div class="data-element-resource-list">${directory.items.map((item, index) => `<button type="button" data-element-resource-article="${key}-${index}"><span>${String(index + 1).padStart(2, '0')}</span><div><strong>${item.title}</strong><small>${item.source}</small></div><b>打开原文 ↗</b></button>`).join('')}</div><div class="data-element-resource-source">参考来源：${directory.items.map((item) => `<a href="${item.url}" target="_blank" rel="noopener">${item.source}原文 ↗</a>`).join('　')}</div><button type="button" class="data-element-directory-back" data-element-directory-back>← 返回学习入口</button>`
     }
-    const renderDataElementResourceArticle = (key, index) => {
+    const renderDataElementResourceArticle = async (key, index) => {
       const actions = document.querySelector('.data-element-actions')
       const directory = dataElementDirectories[key]
       const item = directory?.items[Number(index)]
       if (!actions || !item) return
-      const frameUrl = item.url.replace(/^http:/, 'https:')
       actions.classList.add('resource-mode', 'article-mode')
+      if (item.local) {
+        const response = await fetch(item.local)
+        if (!response.ok) throw new Error(`无法读取 ${item.local}`)
+        const text = await response.text()
+        actions.innerHTML = `<article class="data-element-resource-article data-element-local-article"><button type="button" class="data-element-article-back" data-element-directory-back>← 返回学习入口</button><small>RESOURCE READING / LOCAL TEXT</small><h3>${escapeHtml(item.title)}</h3><div class="data-element-article-meta">来源：${escapeHtml(item.source)} · 已导入站内正文</div><pre>${escapeHtml(text)}</pre><div class="data-element-resource-source">参考来源：<a href="${item.url}" target="_blank" rel="noopener">${escapeHtml(item.source)}官方原文 ↗</a></div></article>`
+        return
+      }
+      const frameUrl = item.url.replace(/^http:/, 'https:')
       actions.innerHTML = `<article class="data-element-resource-article"><button type="button" class="data-element-article-back" data-element-directory-back>← 返回学习入口</button><small>RESOURCE READING / OFFICIAL TEXT</small><h3>${escapeHtml(item.title)}</h3><div class="data-element-article-meta">来源：${escapeHtml(item.source)}</div><div class="data-element-article-frame"><iframe title="${escapeHtml(item.title)}" src="${frameUrl}"></iframe></div><div class="data-element-resource-source">参考来源：<a href="${item.url}" target="_blank" rel="noopener">${escapeHtml(item.source)}官方原文 ↗</a></div></article>`
     }
     const startHomeQuiz = () => {
@@ -442,7 +449,7 @@ createApp({
         event.preventDefault()
         event.stopImmediatePropagation()
         const [directoryKey, itemIndex] = dataElementResourceArticle.dataset.elementResourceArticle.split('-')
-        renderDataElementResourceArticle(directoryKey, itemIndex)
+        renderDataElementResourceArticle(directoryKey, itemIndex).catch(() => showToast('正文读取失败，请点击参考来源查看官方原文'))
       } else if (dataElementDirectoryBack) {
         event.preventDefault()
         event.stopImmediatePropagation()
