@@ -81,7 +81,7 @@ createApp({
         { title: '课程作业中的 AI 协作案例', description: '任务拆解、引用标注与结果核验', date: '2025-04-12' }
       ],
       teacher: [
-        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20' },
+        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20', href: 'https://mp.weixin.qq.com/s/aZYeG1X6sYs842gSdzDieQ' },
         { title: '课程资源安全共享案例', description: '面向学生发布资料时的权限设计', date: '2025-06-10' },
         { title: '教学数据合规使用案例', description: '课堂数据采集与告知的实践方式', date: '2025-05-16' },
         { title: 'AI 辅助教学设计案例', description: '可信使用、过程记录与教学反馈', date: '2025-04-08' }
