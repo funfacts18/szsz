@@ -78,13 +78,13 @@ createApp({
     const caseFiles = {
       student: [
         { title: '生态学视角下数智教育的本质解析与发展路径探究', description: '从生态学视角理解数智教育的本质与发展路径', date: '2025-06-18', href: 'https://mp.weixin.qq.com/s/wletPu97HajJ68gj8gSguQ' },
-        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20' },
         { title: '课程作业中的 AI 协作案例', description: '任务拆解、引用标注与结果核验', date: '2025-04-12' }
       ],
       teacher: [
         { title: '课程资源安全共享案例', description: '面向学生发布资料时的权限设计', date: '2025-06-10' },
         { title: '教学数据合规使用案例', description: '课堂数据采集与告知的实践方式', date: '2025-05-16' },
-        { title: 'AI 辅助教学设计案例', description: '可信使用、过程记录与教学反馈', date: '2025-04-08' }
+        { title: 'AI 辅助教学设计案例', description: '可信使用、过程记录与教学反馈', date: '2025-04-08' },
+        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20' }
       ]
     }
     const downloadFiles = [
@@ -559,6 +559,16 @@ createApp({
       ecosystemSection.id = 'ecosystem'
       ecosystemSection.className = 'section hidden ecosystem-section'
       ecosystemSection.innerHTML = `<div class="page-hero ecosystem-hero"><div class="shell"><span class="micro">09 / APPLICATION ECOSYSTEM</span><h2 class="page-title">应用生态</h2></div></div><div class="shell ecosystem-directory"><section class="ecosystem-scene-grid ecosystem-scene-direct" aria-label="应用生态场景"><article><span>学习成长</span><p>提升检索、表达、协作与数字素养。</p><div><em>成绩查询</em><em>选课流程</em><em>培养计划</em></div></article><article><span>教学科研</span><p>支持课程建设、科研管理与数据协作。</p><div><em>科研工具</em><em>数据实践</em><em>资源共享</em></div></article><article><span>校园生活</span><p>快速连接校园服务，处理日常数字事务。</p><div><em>服务大厅</em><em>学校邮箱</em><em>远程访问</em></div></article></section><section class="ecosystem-data-flow"><div class="ecosystem-lower-title"><div><small>DATA LIFECYCLE</small><h3>数据全流程</h3></div></div><div class="ecosystem-flow-steps"><article><b>01</b><strong>数据来源</strong></article><i aria-hidden="true">→</i><article><b>02</b><strong>业务处理</strong></article><i aria-hidden="true">→</i><article><b>03</b><strong>授权使用</strong></article><i aria-hidden="true">→</i><article><b>04</b><strong>安全归档</strong></article></div></section><section class="ecosystem-support"><div class="ecosystem-support-square" aria-hidden="true"><span>DATA<br>CARE</span></div><div class="ecosystem-support-panel"><small>NEED A HAND?</small><h3>把每一次数据使用，都变成可确认的行动</h3><nav aria-label="应用生态帮助入口"><button type="button"><strong>使用指南</strong><span>快速了解平台功能与使用步骤</span><b>→</b></button><button type="button"><strong>常见问题</strong><span>查看账号、数据和应用使用中的常见疑问</span><b>→</b></button><button type="button"><strong>提交问题</strong><span>反馈使用过程中遇到的问题与建议</span><b>→</b></button></nav></div></section></div>`
+      const supportNav = ecosystemSection.querySelector('.ecosystem-support-panel nav')
+      const submitButton = supportNav?.querySelector('button:last-child')
+      if (supportNav && submitButton) {
+        submitButton.remove()
+        const submitSection = document.createElement('section')
+        submitSection.className = 'ecosystem-submit-bottom'
+        submitSection.innerHTML = '<small>FEEDBACK</small><h3>提交问题</h3><p>反馈使用过程中遇到的问题与建议。</p>'
+        submitSection.append(submitButton)
+        ecosystemSection.querySelector('.ecosystem-directory')?.append(submitSection)
+      }
       document.querySelector('main')?.append(ecosystemSection)
     }
     this.syncSections()

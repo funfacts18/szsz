@@ -2615,7 +2615,7 @@
 
 .ecosystem-support-panel nav {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -2653,6 +2653,80 @@
 }
 
 .ecosystem-support-panel button b {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  color: #0b5ca8;
+  font-size: 18px;
+}
+
+.ecosystem-submit-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  align-items: center;
+  gap: 4px 28px;
+  margin: 4px 0 30px;
+  padding: 24px 28px;
+  border: 1px solid #d5e5ee;
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(10, 61, 66, .08);
+}
+
+.ecosystem-submit-bottom small {
+  color: #0b5ca8;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.ecosystem-submit-bottom h3 {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font: 700 23px/1.35 "Songti SC", "STSong", serif;
+}
+
+.ecosystem-submit-bottom p {
+  margin: 3px 0 0;
+  color: #71828a;
+  font-size: 12px;
+}
+
+.ecosystem-submit-bottom button {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  min-height: 94px;
+  padding: 15px 40px 13px 15px;
+  border: 1px solid #d5e5ee;
+  background: #f8fcff;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.ecosystem-submit-bottom button:hover {
+  border-color: #75b9ea;
+  background: #eef8ff;
+  transform: translateY(-2px);
+}
+
+.ecosystem-submit-bottom button strong {
+  display: block;
+  color: #0b5ca8;
+  font-size: 15px;
+}
+
+.ecosystem-submit-bottom button span {
+  display: block;
+  margin-top: 7px;
+  color: #71828a;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ecosystem-submit-bottom button b {
   position: absolute;
   right: 12px;
   bottom: 12px;
@@ -2732,5 +2806,18 @@
   .ecosystem-support-panel {
     margin: -34px 12px 0;
     padding: 24px 20px 20px;
+  }
+
+  .ecosystem-submit-bottom {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 6px 0 22px;
+    padding: 22px 20px;
+  }
+
+  .ecosystem-submit-bottom button {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 86px;
   }
 }
