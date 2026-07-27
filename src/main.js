@@ -81,10 +81,10 @@ createApp({
         { title: '课程作业中的 AI 协作案例', description: '任务拆解、引用标注与结果核验', date: '2025-04-12' }
       ],
       teacher: [
+        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20' },
         { title: '课程资源安全共享案例', description: '面向学生发布资料时的权限设计', date: '2025-06-10' },
         { title: '教学数据合规使用案例', description: '课堂数据采集与告知的实践方式', date: '2025-05-16' },
-        { title: 'AI 辅助教学设计案例', description: '可信使用、过程记录与教学反馈', date: '2025-04-08' },
-        { title: '学生科研数据整理案例', description: '从采集、命名到备份的完整流程', date: '2025-05-20' }
+        { title: 'AI 辅助教学设计案例', description: '可信使用、过程记录与教学反馈', date: '2025-04-08' }
       ]
     }
     const downloadFiles = [
@@ -629,6 +629,9 @@ createApp({
     const dataElementsSection = document.querySelector('#contact')
     if (dataElementsSection) {
       dataElementsSection.innerHTML = `<div class="page-hero data-elements-hero"><div class="shell"><span class="micro">07 / DATA ELEMENTS</span><h2 class="page-title">数据要素</h2></div></div><div class="shell data-elements-directory"><section class="data-element-quiz" aria-live="polite"></section><section class="data-element-concepts"><div class="data-element-section-title"><span>01</span><div><small>CORE CONCEPTS</small><h3>数据要素，到底是什么？</h3></div></div><p class="data-element-definition">数据要素，是指能够直接投入生产、创造新价值的数据资源；它是继土地、劳动力、资本、技术之后的第五大生产要素。</p><div class="data-element-concept-cards"><article><strong>数据</strong><p>原始的信息记录</p><small>未开采的原油</small></article><article><strong>数据资源</strong><p>初步整理，有一定价值</p><small>已开采的原油</small></article><article class="featured"><strong>数据要素</strong><p>直接参与生产、创造新价值</p><small>精炼后的汽油，驱动引擎</small></article></div></section><section class="data-element-flow"><div class="data-element-section-title"><span>02</span><div><small>DATA FLOW</small><h3>一条数据从产生到赚钱，走了几步？</h3></div></div><div class="data-element-flow-steps"><article><b>01</b><strong>产生数据</strong><p>你在数字场景中的点击、支付与选择。</p></article><i aria-hidden="true">→</i><article><b>02</b><strong>采集加工</strong><p>企业采集、清洗、脱敏并整合数据。</p></article><i aria-hidden="true">→</i><article><b>03</b><strong>合规交易</strong><p>在合规、可信环境下进行数据流通。</p></article><i aria-hidden="true">→</i><article><b>04</b><strong>应用增值</strong><p>用数据改善服务、效率与决策。</p></article></div></section><section class="data-element-actions"><div><small>LEARN · PRACTISE · PROTECT</small><h3>探索更多，提升你的数字素养</h3><p>从真实案例、课程学习与个人权益保护开始，掌握用好数据的能力。</p></div><nav aria-label="数据要素学习入口"><a href="#fraud"><span>01</span><strong>典型案例</strong><small>了解数据要素在各行业的创新实践。</small><b>→</b></a><a href="#downloads"><span>02</span><strong>相关课程</strong><small>系统学习数据要素与数字经济知识。</small><b>→</b></a><a href="#security"><span>03</span><strong>个人数据权益</strong><small>了解数据权益与个人信息保护方式。</small><b>→</b></a></nav></section></div>`
+      const dataElementsDirectory = dataElementsSection.querySelector('.data-elements-directory')
+      const dataElementQuiz = dataElementsSection.querySelector('.data-element-quiz')
+      if (dataElementsDirectory && dataElementQuiz) dataElementsDirectory.append(dataElementQuiz)
       this.renderDataElementQuiz()
       this.renderDataElementActions()
       this.renderDataElementFlowMore()
