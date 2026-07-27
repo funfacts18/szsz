@@ -571,18 +571,13 @@ createApp({
       const policyMicro = policySection.querySelector('.page-hero .micro')
       const policyTitle = policySection.querySelector('.page-hero .page-title')
       const policyLink = policySection.querySelector('.page-hero a')
-      const policyTabs = [...policySection.querySelectorAll('[data-tab="policy"]')]
       if (policyMicro) policyMicro.textContent = '02 / POLICY INTERPRETATION'
       if (policyTitle) policyTitle.textContent = '政策解读'
       policyLink?.remove()
-      if (policyTabs[0]) {
-        policyTabs[0].textContent = '政策解读'
-        policyTabs[0].classList.add('active')
-      }
-      policyTabs.slice(1).forEach((tab) => tab.remove())
-      policySection.querySelector('#policySchool')?.remove()
+      const policyIndex = policySection.querySelector('.news-index')
+      if (policyIndex) policyIndex.innerHTML = `<button class="news-tab active" data-tab="policy" data-panels='["policyNatl","policyProv","policySchool"]' data-show="policyNatl">国家</button><button class="news-tab" data-tab="policy" data-panels='["policyNatl","policyProv","policySchool"]' data-show="policyProv">省级</button><button class="news-tab" data-tab="policy" data-panels='["policyNatl","policyProv","policySchool"]' data-show="policySchool">校内</button>`
       const policyCard = policySection.querySelector('.news-card')
-      if (policyCard) policyCard.innerHTML = `<div id="policyNatl"><div class="news-item"><div class="news-icon">法</div><div class="news-meta"><h3>《中华人民共和国网络安全法》修改后有哪些变化？</h3><p>网络安全法修改要点图解 · 站内阅读</p></div><button type="button" class="news-link policy-read-button" data-policy-interpretation>阅读 →</button></div><div class="news-item"><div class="news-icon">行</div><div class="news-meta"><h3>数字化赋能教师发展行动导读</h3><p>培训、资源、实践与治理</p></div><a href="#" class="news-link">阅读 →</a></div></div>`
+      if (policyCard) policyCard.innerHTML = `<div id="policyNatl"><div class="news-item"><div class="news-icon">国</div><div class="news-meta"><h3>《中华人民共和国网络安全法》修改后有哪些变化？</h3><p>网络安全法修改要点图解 · 站内阅读</p></div><button type="button" class="news-link policy-read-button" data-policy-interpretation>阅读 →</button></div><div class="news-item"><div class="news-icon">国</div><div class="news-meta"><h3>数字化赋能教师发展行动导读</h3><p>培训、资源、实践与治理</p></div><a href="#" class="news-link">阅读 →</a></div></div><div id="policyProv" class="hidden"><div class="news-item"><div class="news-icon">省</div><div class="news-meta"><h3>安徽省数字化发展与数据治理政策</h3><p>省级数字政府、数据资源与教育数字化政策目录</p></div><span class="news-link">目录整理中</span></div><div class="news-item"><div class="news-icon">省</div><div class="news-meta"><h3>安徽省教育数字化转型行动参考</h3><p>省级教育数字化建设与应用实践</p></div><span class="news-link">目录整理中</span></div></div><div id="policySchool" class="hidden"><div class="news-item"><div class="news-icon">校</div><div class="news-meta"><h3>安徽农业大学信息化建设制度</h3><p>学校数据管理、信息系统与服务规范</p></div><span class="news-link">校内目录</span></div><div class="news-item"><div class="news-icon">校</div><div class="news-meta"><h3>校园数字服务使用指引</h3><p>面向师生的校园平台与数据安全提醒</p></div><span class="news-link">校内目录</span></div></div>`
     }
 
     const footerBrand = document.querySelector('.footer-brand')
