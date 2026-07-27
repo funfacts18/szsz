@@ -1803,9 +1803,19 @@
 }
 
 .data-element-resource-source a {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #fff;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.data-element-resource-source a:hover {
+  background: transparent;
+  transform: none;
 }
 
 .data-element-resource-article {
@@ -1882,7 +1892,15 @@
 }
 
 .data-element-actions .data-element-directory-back {
+  display: inline;
+  width: auto;
   min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  text-align: left;
 }
 
 .data-element-directory-back:hover {
