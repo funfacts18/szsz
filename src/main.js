@@ -564,20 +564,6 @@ createApp({
     const appName = document.querySelector('.app-name')
     if (appName) appName.innerHTML = '<img src="assets/ahau-emblem-white.png" alt="安徽农业大学校徽"><span>数智素养服务台</span>'
 
-    const quickLinks = document.querySelectorAll('.quick a')
-    const schoolWebsite = quickLinks[4]
-    const digitalLearning = quickLinks[5]
-    if (schoolWebsite) {
-      schoolWebsite.setAttribute('href', 'https://www.ahau.edu.cn/')
-      schoolWebsite.setAttribute('aria-label', '学校官网')
-      schoolWebsite.innerHTML = '<span>官</span>学校官网'
-    }
-    if (digitalLearning) {
-      digitalLearning.setAttribute('href', '#contact')
-      digitalLearning.setAttribute('aria-label', '数字学习')
-      digitalLearning.innerHTML = '<span>学</span>数字学习'
-    }
-
     const policyNav = document.querySelector('#nav a[href="#policy"]')
     if (policyNav) policyNav.textContent = '政策解读'
     const policySection = document.querySelector('#policy')
