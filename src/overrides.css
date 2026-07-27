@@ -2598,6 +2598,30 @@
   font-size: 18px;
 }
 
+.source-bar {
+  min-height: 38px;
+  padding: 10px 0;
+  background: #dceef8;
+  color: #587685;
+  font-size: 12px;
+}
+
+.source-bar .shell {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.source-bar a {
+  color: #0b5ca8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.source-bar a:hover {
+  color: #073f74;
+}
+
 @media (max-width: 900px) {
   .ecosystem-flow-steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2614,6 +2638,11 @@
 }
 
 @media (max-width: 680px) {
+  .source-bar .shell {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
   .ecosystem-data-flow {
     padding: 25px 20px 29px;
   }

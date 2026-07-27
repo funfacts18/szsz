@@ -558,6 +558,9 @@ createApp({
       document.querySelector('main')?.append(ecosystemSection)
     }
     this.syncSections()
+    document.querySelector('.quick')?.remove()
+    const footer = document.querySelector('.footer')
+    if (footer && !document.querySelector('.source-bar')) footer.insertAdjacentHTML('beforebegin', '<div class="source-bar"><div class="shell"><span>参考来源：</span><a href="https://www.nda.gov.cn/sjj/index_pc.html" target="_blank" rel="noopener">国家数据局 ↗</a><a href="http://www.npc.gov.cn/npc/" target="_blank" rel="noopener">中国人大网 ↗</a></div></div>')
     const appName = document.querySelector('.app-name')
     if (appName) appName.innerHTML = '<img src="assets/ahau-emblem-white.png" alt="安徽农业大学校徽"><span>数智素养服务台</span>'
 
