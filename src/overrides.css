@@ -1080,7 +1080,7 @@
   bottom: 0;
   left: 30px;
   height: 3px;
-  background: #5b20c9;
+  background: #388e3c;
   content: "";
   transform: scaleX(0);
   transition: transform .2s ease;
@@ -1099,7 +1099,7 @@
 .data-news-switch span {
   grid-row: span 2;
   align-self: center;
-  color: #5b20c9;
+  color: #388e3c;
   font: 700 30px/1 "Songti SC", "STSong", serif;
 }
 
@@ -1139,7 +1139,7 @@
 }
 
 .data-news-featured-copy > span {
-  color: #5b20c9;
+  color: #388e3c;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: .1em;
@@ -1183,7 +1183,7 @@
   display: grid;
   align-content: start;
   gap: 3px;
-  color: #5b20c9;
+  color: #388e3c;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1329,7 +1329,7 @@
 }
 
 .data-element-question > span {
-  color: #5b20c9;
+  color: #388e3c;
   font: 700 18px/1 "Songti SC", "STSong", serif;
 }
 
@@ -1405,7 +1405,7 @@
 }
 
 .data-element-result small {
-  color: #5b20c9;
+  color: #388e3c;
   font-size: 11px;
   font-weight: 900;
   letter-spacing: .08em;
@@ -1485,7 +1485,7 @@
 }
 
 .data-element-section-title > span {
-  color: #5b20c9;
+  color: #388e3c;
   font: 700 38px/1 "Songti SC", "STSong", serif;
 }
 
@@ -1568,7 +1568,7 @@
 .data-element-flow-steps article b {
   display: block;
   margin-bottom: 18px;
-  color: #5b20c9;
+  color: #388e3c;
   font: 700 26px/1 "Times New Roman", "Songti SC", serif;
 }
 
@@ -2138,7 +2138,7 @@
 }
 
 .ecosystem-stats strong {
-  color: #5b20c9;
+  color: #388e3c;
   font: 400 clamp(30px, 4vw, 46px)/1 "Times New Roman", "Songti SC", serif;
 }
 
@@ -2159,7 +2159,7 @@
 }
 
 .ecosystem-section-title > span {
-  color: #5b20c9;
+  color: #388e3c;
   font: 400 42px/.9 "Times New Roman", "Songti SC", serif;
 }
 
@@ -2279,8 +2279,8 @@
 }
 
 .ecosystem-scene-grid article:nth-child(2) {
-  border-left-color: #8f79d9;
-  background: #f8f6ff;
+  border-left-color: #388e3c;
+  background: #f3fbf5;
 }
 
 .ecosystem-scene-grid article:nth-child(3) {
@@ -2388,8 +2388,8 @@
 }
 
 .ecosystem-scene-direct article:nth-child(2) {
-  border-left-color: #8f79d9;
-  background: #fbfaff;
+  border-left-color: #388e3c;
+  background: #f5fbf6;
 }
 
 .ecosystem-scene-direct article:nth-child(3) {
@@ -2428,7 +2428,7 @@
 }
 
 .ecosystem-lower-title > span {
-  color: #5b20c9;
+  color: #388e3c;
   font: 400 42px/.9 "Times New Roman", "Songti SC", serif;
 }
 
@@ -2473,7 +2473,7 @@
 .ecosystem-flow-steps article b {
   display: block;
   margin-bottom: 8px;
-  color: #5b20c9;
+  color: #388e3c;
   font: 700 21px/1 "Times New Roman", "Songti SC", serif;
 }
 
