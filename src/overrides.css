@@ -2409,3 +2409,46 @@
     flex-direction: column;
   }
 }
+
+/* The three ecosystem scenes are now the primary content row. */
+.ecosystem-scene-direct {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ecosystem-scene-direct article {
+  min-height: 216px;
+  padding: 30px 28px;
+  border: 1px solid #d5e5ee;
+  border-left: 5px solid #73b7ea;
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(10, 61, 66, .08);
+}
+
+.ecosystem-scene-direct article:nth-child(2) {
+  border-left-color: #8f79d9;
+  background: #fbfaff;
+}
+
+.ecosystem-scene-direct article:nth-child(3) {
+  border-left-color: #49a69a;
+  background: #f8fdfc;
+}
+
+.ecosystem-scene-direct article:hover {
+  box-shadow: 0 18px 36px rgba(11, 92, 168, .14);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 680px) {
+  .ecosystem-scene-direct {
+    gap: 16px;
+  }
+
+  .ecosystem-scene-direct article {
+    min-height: 175px;
+    padding: 25px 22px;
+  }
+}
