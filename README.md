@@ -7,3 +7,17 @@
 - 生产构建：`npm run build`
 
 GitHub Pages 使用 GitHub Actions 自动构建并发布网站。
+
+## Docker 部署
+
+构建并启动容器：
+
+```bash
+docker compose up -d --build
+```
+
+启动后访问 <http://localhost:8080>。停止容器：
+
+```bash
+docker compose down
+```
